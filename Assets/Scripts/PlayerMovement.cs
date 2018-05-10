@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         print(Input.GetAxis("Vertical"));
-        playerRigidbody.velocity = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, Input.GetAxis("Vertical") * moveSpeed, 0);
+        playerRigidbody.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * moveSpeed;
 
 
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;

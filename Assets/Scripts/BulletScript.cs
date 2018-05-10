@@ -8,7 +8,7 @@ public class BulletScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        GetComponent<Rigidbody>().velocity = transform.TransformDirection(new Vector3(speed, 0, 0));
+        GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(speed, 0));
 		Invoke("Destroy", 3);
     }
 
