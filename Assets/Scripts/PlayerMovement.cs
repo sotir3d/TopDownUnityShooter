@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 playerPosition;
     Vector2 direction;
     Quaternion playerRotation;
-    Rigidbody playerRigidbody;
+    Rigidbody2D playerRigidbody;
 
     float angle;
 
@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerPosition = transform.position;
         playerRotation = transform.rotation;
-        playerRigidbody = GetComponent<Rigidbody>();
+        playerRigidbody = GetComponent<Rigidbody2D>();
 
         playerRotation.z = 90;
         transform.rotation = playerRotation;
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        
+        print(Input.GetAxis("Vertical"));
         playerRigidbody.velocity = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, Input.GetAxis("Vertical") * moveSpeed, 0);
 
 
