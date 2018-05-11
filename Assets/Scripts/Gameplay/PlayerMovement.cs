@@ -26,11 +26,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        print(Input.GetAxis("Vertical"));
         playerRigidbody.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * moveSpeed;
-
-
+        
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
         angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
