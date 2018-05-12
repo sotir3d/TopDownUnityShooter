@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    Vector3 playerPosition;
+
     Vector2 direction;
     Quaternion playerRotation;
     Rigidbody2D playerRigidbody;
@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        playerPosition = transform.position;
         playerRotation = transform.rotation;
         playerRigidbody = GetComponent<Rigidbody2D>();
 
@@ -26,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerRigidbody.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * moveSpeed;
+        playerRigidbody.velocity = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * moveSpeed;
         
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
