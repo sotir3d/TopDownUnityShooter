@@ -10,8 +10,8 @@ public class CameraScript : MonoBehaviour
     Vector3 cameraPosition;
     Vector3 mouseDistanceFromPlayer;
 
-    float maxCameraOffset = 2;
-    float cameraMoveSpeed = 10f;
+    float maxCameraOffset = 5;
+    float cameraMoveSpeed = 8f;
     float minCursorDistance = 0.1f;
 
     // Use this for initialization
@@ -25,12 +25,12 @@ public class CameraScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         mouseDistanceFromPlayer = Vector3.ClampMagnitude(GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition) - playerTransform.position, maxCameraOffset);
 
-        cameraPosition.x = Mathf.Lerp(cameraPosition.x, playerTransform.position.x + mouseDistanceFromPlayer.x, Time.smoothDeltaTime * cameraMoveSpeed);
-        cameraPosition.y = Mathf.Lerp(cameraPosition.y, playerTransform.position.y + mouseDistanceFromPlayer.y, Time.smoothDeltaTime * cameraMoveSpeed);
+        cameraPosition.x = Mathf.Lerp(cameraPosition.x, playerTransform.position.x + mouseDistanceFromPlayer.x, Time.deltaTime * cameraMoveSpeed);
+        cameraPosition.y = Mathf.Lerp(cameraPosition.y, playerTransform.position.y + mouseDistanceFromPlayer.y, Time.deltaTime * cameraMoveSpeed);
 
         //if (mouseDistanceFromPlayer.x > minCursorDistance)
         //{
