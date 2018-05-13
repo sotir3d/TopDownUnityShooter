@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4780934296365072}
   - component: {fileID: 114144953365579336}
   - component: {fileID: 212949451903971162}
-  - component: {fileID: 61343933983444534}
   - component: {fileID: 50400720283504076}
-  m_Layer: 0
+  - component: {fileID: 58654545690286854}
+  m_Layer: 9
   m_Name: EnemyCharacter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -38,9 +38,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4270146800045898}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PatrolPoint2
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,9 +53,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4535949325328310}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,9 +68,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4369131189382076}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PatrolPoint1
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,9 +86,9 @@ GameObject:
   - component: {fileID: 212174631968907204}
   - component: {fileID: 60989485782903310}
   - component: {fileID: 114623942155454718}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyView
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626169632442670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.241231, y: 2.74, z: 0}
+  m_LocalPosition: {x: 0.99, y: 2.74, z: 0}
   m_LocalScale: {x: 0.5775737, y: 0.5775737, z: 0.5775737}
   m_Children:
   - {fileID: 4369131189382076}
@@ -182,6 +182,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58654545690286854
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090718440780174}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.205
 --- !u!60 &60989485782903310
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -209,31 +224,6 @@ PolygonCollider2D:
     - - {x: 0, y: 0.5}
       - {x: -0.4330127, y: -0.25000003}
       - {x: 0.43301272, y: -0.24999996}
---- !u!61 &61343933983444534
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1090718440780174}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.41, y: 2.22}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.41, y: 2.22}
-  m_EdgeRadius: 0
 --- !u!114 &114144953365579336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,6 +239,7 @@ MonoBehaviour:
   - {fileID: 4369131189382076}
   - {fileID: 4270146800045898}
   EnemySpeed: 1
+  turnSpeed: 5
   playerTransform: {fileID: 0}
   isSeeingPlayer: 0
 --- !u!114 &114623942155454718

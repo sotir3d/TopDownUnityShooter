@@ -33,6 +33,9 @@ public class EnemyView : MonoBehaviour
 
         //}
 
-        enemyCharacter.GetComponent<EnemyPatrolling>().CheckSightlineToPlayer();
+        if (collision.gameObject.tag == "Player")
+        {
+            enemyCharacter.GetComponent<EnemyPatrolling>().CheckSightlineToPlayer();
+        }
     }
 }
