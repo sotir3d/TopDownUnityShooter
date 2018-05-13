@@ -23,6 +23,7 @@ public class EnemyPatrolling : MonoBehaviour
     Transform currentPatrolPoint;
     int currentPatrolIndex;
 
+    float lastTimeSeenPlayer = 0;
 
     float minDistanceToPatrolpoint = 0.1f;
 
@@ -40,9 +41,17 @@ public class EnemyPatrolling : MonoBehaviour
         float angle;
         Quaternion q;
 
+        if ((Time.realtimeSinceStartup - lastTimeSeenPlayer) > 2)
+        {
+            // when losing sight to player, move back towards the last targeted patrol point
+            enemySpeed = enemySpeedWalk;
+            isSeeingPlayer = false;
+            currentPatrolPoint = patrolPoints[currentPatrolIndex];
+
+        }
+
         if (isSeeingPlayer == false)
         {
-            Debug.Log("false");
             if (Vector3.Distance(transform.position, currentPatrolPoint.position) < minDistanceToPatrolpoint)
             {
                 if (currentPatrolIndex + 1 < patrolPoints.Length)
@@ -68,16 +77,16 @@ public class EnemyPatrolling : MonoBehaviour
 
         if (Vector3.Distance(currentPatrolPoint.position, transform.position) > 0.1f)
         {
+            // get the angle between enemy and the next patrol point
             patrolPointDir = currentPatrolPoint.position - transform.position;
-
             angle = Mathf.Atan2(patrolPointDir.y, patrolPointDir.x) * Mathf.Rad2Deg;
 
+            // rotate the enemy toward the next patrol point, after rotation is finished, move towards patrol point
             q = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, q, turnSpeed);
 
             if (transform.rotation == q)
             {
-
                 transform.Translate(Vector3.right * Time.deltaTime * enemySpeed);
             }
         }
@@ -92,27 +101,26 @@ public class EnemyPatrolling : MonoBehaviour
         // set up the layer mask, so that it ignores layers 9 and 10
         layerMask = 1 << 9;
         layerMask += 1 << 10;
+        layerMask += 1 << 11;
         layerMask = ~layerMask;
         
 
         // racast from the enemy towards the player
         RaycastHit2D hit = Physics2D.Raycast(transform.position, playerTransform.position - transform.position, Mathf.Infinity, layerMask);
-        
-
-        //Debug.Log(hit.collider.gameObject.name);
-
-
+        Debug.Log((Time.realtimeSinceStartup - lastTimeSeenPlayer));
         if (hit.collider.gameObject.tag == "Player")
         {
+            lastTimeSeenPlayer = Time.realtimeSinceStartup;
             isSeeingPlayer = true;
         }
-        else
-        {
-            enemySpeed = enemySpeedWalk;
-            isSeeingPlayer = false;
-            currentPatrolPoint = patrolPoints[currentPatrolIndex];
+        //else if((Time.realtimeSinceStartup - lastSeen) > 2)
+        //{
+        //    // when losing sight to player, move back towards the last targeted patrol point
+        //    enemySpeed = enemySpeedWalk;
+        //    isSeeingPlayer = false;
+        //    currentPatrolPoint = patrolPoints[currentPatrolIndex];
             
-        }
+        //}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
