@@ -6,7 +6,8 @@ public class EnemyPatrolling : MonoBehaviour
 {
     public Transform[] patrolPoints;
 
-    public float turnSpeed = 5;
+    public float turnSpeedWalk = 5;
+    public float turnSpeedRun = 180;
 
     public Transform playerTransform;
 
@@ -18,6 +19,7 @@ public class EnemyPatrolling : MonoBehaviour
 
 
     float enemySpeed;
+    float turnSpeed = 5;
     Vector3 patrolPointDir;
 
     Transform currentPatrolPoint;
@@ -45,6 +47,7 @@ public class EnemyPatrolling : MonoBehaviour
         {
             // when losing sight to player, move back towards the last targeted patrol point
             enemySpeed = enemySpeedWalk;
+            turnSpeed = turnSpeedWalk;
             isSeeingPlayer = false;
             currentPatrolPoint = patrolPoints[currentPatrolIndex];
 
@@ -64,14 +67,13 @@ public class EnemyPatrolling : MonoBehaviour
                 }
                 currentPatrolPoint = patrolPoints[currentPatrolIndex];
             }
-
-
         }
 
         if (isSeeingPlayer == true)
         {
             currentPatrolPoint = playerTransform;
             enemySpeed = enemySpeedRun;
+            turnSpeed = turnSpeedRun;
         }
 
 
@@ -106,7 +108,7 @@ public class EnemyPatrolling : MonoBehaviour
 
         //racast from the enemy towards the player
         RaycastHit2D hit = Physics2D.Raycast(transform.position, playerTransform.position - transform.position, Mathf.Infinity, layerMask);
-        Debug.Log((Time.realtimeSinceStartup - lastTimeSeenPlayer));
+
         if (hit.collider.gameObject.tag == "Player")
         {
             lastTimeSeenPlayer = Time.realtimeSinceStartup;

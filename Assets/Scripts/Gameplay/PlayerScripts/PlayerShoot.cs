@@ -6,7 +6,7 @@ public class PlayerShoot : MonoBehaviour
 {
     public Transform bulletTransform;
     public GameObject bullet;
-
+    public GameObject bulletNoiseRadius;
 
     // Use this for initialization
     void Start()
@@ -20,7 +20,7 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Instantiate(bullet, bulletTransform.position, bulletTransform.rotation);
-
+            bulletNoiseRadius.GetComponent<BulletNoise>().notifyEnemies();
         }
     }
 }
