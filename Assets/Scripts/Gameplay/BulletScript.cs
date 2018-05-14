@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    public float speed = 10;
+    public float speed = 20;
     // Use this for initialization
     void Start()
     {
@@ -31,6 +31,9 @@ public class BulletScript : MonoBehaviour
 
         }
 
-        Destroy(gameObject);
+        if (collision.gameObject.tag != "Projectile")
+        {
+            Destroy(gameObject);
+        }
     }
 }

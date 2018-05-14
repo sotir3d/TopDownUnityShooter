@@ -7,6 +7,10 @@ public class CameraScript : MonoBehaviour
 
     public Transform playerTransform;
 
+    public Texture2D cursorTexture;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
+
     Vector3 cameraPosition;
     Vector3 mouseDistanceFromPlayer;
 
@@ -18,6 +22,8 @@ public class CameraScript : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+
         cameraPosition = transform.position;
         cameraPosition.x = playerTransform.position.x;
         cameraPosition.y = playerTransform.position.y;

@@ -84,8 +84,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4449341084473420}
   - component: {fileID: 212174631968907204}
-  - component: {fileID: 60989485782903310}
   - component: {fileID: 114623942155454718}
+  - component: {fileID: 61000395346435182}
   m_Layer: 10
   m_Name: EnemyView
   m_TagString: Untagged
@@ -127,7 +127,7 @@ Transform:
   m_GameObject: {fileID: 1983119422938132}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 12.44, y: 0, z: 0}
-  m_LocalScale: {x: 27.924536, y: 26.281284, z: 1}
+  m_LocalScale: {x: 11.518871, y: 26.281284, z: 1}
   m_Children: []
   m_Father: {fileID: 4780934296365072}
   m_RootOrder: 0
@@ -197,8 +197,8 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.205
---- !u!60 &60989485782903310
-PolygonCollider2D:
+--- !u!61 &61000395346435182
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -219,11 +219,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.5}
-      - {x: -0.4330127, y: -0.25000003}
-      - {x: 0.43301272, y: -0.24999996}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114144953365579336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,7 +289,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fafd0f66a924e9943998bbb58262a01e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2557f058d1e9dc64693d1d182358c85d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

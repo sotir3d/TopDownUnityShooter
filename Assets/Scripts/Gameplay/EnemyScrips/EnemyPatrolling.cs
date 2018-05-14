@@ -26,6 +26,8 @@ public class EnemyPatrolling : MonoBehaviour
     float lastTimeSeenPlayer = 0;
 
     float minDistanceToPatrolpoint = 0.1f;
+    float angle;
+    Quaternion q;
 
     // Use this for initialization
     void Start()
@@ -38,8 +40,6 @@ public class EnemyPatrolling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float angle;
-        Quaternion q;
 
         if ((Time.realtimeSinceStartup - lastTimeSeenPlayer) > 2)
         {
@@ -103,9 +103,8 @@ public class EnemyPatrolling : MonoBehaviour
         layerMask += 1 << 10;
         layerMask += 1 << 11;
         layerMask = ~layerMask;
-        
 
-        // racast from the enemy towards the player
+        //racast from the enemy towards the player
         RaycastHit2D hit = Physics2D.Raycast(transform.position, playerTransform.position - transform.position, Mathf.Infinity, layerMask);
         Debug.Log((Time.realtimeSinceStartup - lastTimeSeenPlayer));
         if (hit.collider.gameObject.tag == "Player")
@@ -113,14 +112,6 @@ public class EnemyPatrolling : MonoBehaviour
             lastTimeSeenPlayer = Time.realtimeSinceStartup;
             isSeeingPlayer = true;
         }
-        //else if((Time.realtimeSinceStartup - lastSeen) > 2)
-        //{
-        //    // when losing sight to player, move back towards the last targeted patrol point
-        //    enemySpeed = enemySpeedWalk;
-        //    isSeeingPlayer = false;
-        //    currentPatrolPoint = patrolPoints[currentPatrolIndex];
-            
-        //}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
