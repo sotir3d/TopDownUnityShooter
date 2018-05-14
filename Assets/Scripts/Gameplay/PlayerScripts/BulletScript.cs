@@ -27,8 +27,7 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
-
+            collision.gameObject.GetComponentInParent<EnemyHandler>().Death();
         }
 
         if (collision.gameObject.tag != "Projectile")

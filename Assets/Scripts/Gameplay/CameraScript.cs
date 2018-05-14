@@ -5,6 +5,9 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
 
+    public float maxCameraOffset = 5;
+    public float lookAroundOffset = 20;
+    public float cameraMoveSpeed = 8f;
     public Transform playerTransform;
 
     public Texture2D cursorTexture;
@@ -14,8 +17,7 @@ public class CameraScript : MonoBehaviour
     Vector3 cameraPosition;
     Vector3 mouseDistanceFromPlayer;
 
-    float maxCameraOffset = 5;
-    float cameraMoveSpeed = 8f;
+    float activeCameraOffset;
     float minCursorDistance = 0.1f;
 
     // Use this for initialization
@@ -33,37 +35,21 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        mouseDistanceFromPlayer = Vector3.ClampMagnitude(GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition) - playerTransform.position, maxCameraOffset);
+
+        if(Input.GetButton("LookAround"))
+        {
+            activeCameraOffset = lookAroundOffset;
+        }
+        else
+        {
+            activeCameraOffset = maxCameraOffset;
+        }
+
+        mouseDistanceFromPlayer = Vector3.ClampMagnitude(GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition) - playerTransform.position, activeCameraOffset);
 
         cameraPosition.x = Mathf.Lerp(cameraPosition.x, playerTransform.position.x + mouseDistanceFromPlayer.x, Time.deltaTime * cameraMoveSpeed);
         cameraPosition.y = Mathf.Lerp(cameraPosition.y, playerTransform.position.y + mouseDistanceFromPlayer.y, Time.deltaTime * cameraMoveSpeed);
-
-        //if (mouseDistanceFromPlayer.x > minCursorDistance)
-        //{
-        //    cameraPosition.x = Mathf.Lerp(cameraPosition.x, playerTransform.position.x + maxCameraOffset, cameraMoveSpeed);
-        //}
-        //else if (mouseDistanceFromPlayer.x < -minCursorDistance)
-        //{
-        //    cameraPosition.x = Mathf.Lerp(cameraPosition.x, playerTransform.position.x - maxCameraOffset, cameraMoveSpeed);
-        //}
-        //else
-        //{
-        //    cameraPosition.x = Mathf.Lerp(cameraPosition.x, playerTransform.position.x, cameraMoveSpeed);
-        //}
-
-        //if (mouseDistanceFromPlayer.y > minCursorDistance)
-        //{
-        //    cameraPosition.y = Mathf.Lerp(cameraPosition.y, playerTransform.position.y + maxCameraOffset, cameraMoveSpeed);
-        //}
-        //else if (mouseDistanceFromPlayer.y < -minCursorDistance)
-        //{
-        //    cameraPosition.y = Mathf.Lerp(cameraPosition.y, playerTransform.position.y - maxCameraOffset, cameraMoveSpeed);
-        //}
-        //else
-        //{
-        //    cameraPosition.y = Mathf.Lerp(cameraPosition.y, playerTransform.position.y, cameraMoveSpeed);
-        //}
-
+        
         transform.position = cameraPosition;
     }
 }

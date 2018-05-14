@@ -15,18 +15,26 @@ public class BulletNoise : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // deletes dead enemies out of the list
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i] == null)
+            {
+                enemies.Remove(enemies[i]);
+            }
+        }
     }
-
-    //private void OnTriggerEnter2D(Collision2D collision)
-    //{
-    //    Debug.Log(collision.gameObject);
-    //    //enemies.Add(collision.gameObject);
-    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        enemies.Add(collision.gameObject);
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if (enemies.Contains(collision.gameObject) == false)
+            {
+                enemies.Add(collision.gameObject);
+            }
+
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -36,8 +44,10 @@ public class BulletNoise : MonoBehaviour
 
     public void notifyEnemies()
     {
+        int i = 0;
         foreach (var enemy in enemies)
         {
+            i++;
             enemy.GetComponent<EnemyPatrolling>().CheckSightlineToPlayer();
         }
     }
