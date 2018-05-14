@@ -20,6 +20,6 @@ public class ButtonScript : MonoBehaviour
 
     private void OnMouseUp()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 }

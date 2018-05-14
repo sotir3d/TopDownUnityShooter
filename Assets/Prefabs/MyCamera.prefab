@@ -110,7 +110,7 @@ MonoBehaviour:
   cameraMoveSpeed: 8
   playerTransform: {fileID: 0}
   cursorTexture: {fileID: 2800000, guid: 16882d67e2e5b6f4c95b915946bd5222, type: 3}
-  cursorMode: 1
+  cursorMode: 0
   hotSpot: {x: 16, y: 16}
 --- !u!124 &124112824713639504
 Behaviour:
