@@ -8,10 +8,12 @@ public class PlayerShoot : MonoBehaviour
     public GameObject bullet;
     public GameObject bulletNoiseRadius;
 
+    Animator anim;
+
     // Use this for initialization
     void Start()
     {
-
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -19,6 +21,7 @@ public class PlayerShoot : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            anim.SetTrigger("Shoot");
             Instantiate(bullet, bulletTransform.position, bulletTransform.rotation);
             bulletNoiseRadius.GetComponent<BulletNoise>().notifyEnemies();
         }

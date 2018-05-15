@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4780934296365072}
   - component: {fileID: 114144953365579336}
-  - component: {fileID: 212949451903971162}
   - component: {fileID: 50400720283504076}
   - component: {fileID: 58654545690286854}
+  - component: {fileID: 212294075617119436}
+  - component: {fileID: 95070128522280116}
   m_Layer: 9
   m_Name: EnemyCharacter
   m_TagString: Enemy
@@ -111,15 +112,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626169632442670}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 4.36, y: 1.31, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -11.25, y: 15.942831, z: 0}
   m_LocalScale: {x: 0.5775737, y: 0.5775737, z: 0.5775737}
   m_Children:
   - {fileID: 4369131189382076}
   - {fileID: 4780934296365072}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4780934296365072
 Transform:
   m_ObjectHideFlags: 1
@@ -194,6 +195,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &95070128522280116
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090718440780174}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 05ebee6c577d73149b1c65e6d9f48944, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114029471749021802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,7 +301,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!212 &212949451903971162
+--- !u!212 &212294075617119436
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -322,7 +341,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.41, y: 2.22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     Quaternion playerRotation;
     Rigidbody2D playerRigidbody;
 
+    Animator anim;
+
     float angle;
 
     // Use this for initialization
@@ -20,13 +22,25 @@ public class PlayerMovement : MonoBehaviour
 
         playerRotation.z = 90;
         transform.rotation = playerRotation;
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         playerRigidbody.velocity = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * moveSpeed;
-        
+
+        if(Mathf.Abs(playerRigidbody.velocity.x) > 0 || Mathf.Abs(playerRigidbody.velocity.y) > 0)
+        {
+            anim.SetFloat("Speed", 1);
+        }
+        else
+        {
+            anim.SetFloat("Speed", 0);
+        }
+
+
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
         angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

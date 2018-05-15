@@ -16,7 +16,7 @@ public class EnemyPatrolling : MonoBehaviour
     public float enemySpeedWalk = 2;
     public float enemySpeedRun = 5;
 
-
+    Animator anim;
 
     float enemySpeed;
     float turnSpeed = 5;
@@ -37,6 +37,13 @@ public class EnemyPatrolling : MonoBehaviour
         enemySpeed = enemySpeedWalk;
         currentPatrolIndex = 0;
         currentPatrolPoint = patrolPoints[currentPatrolIndex];
+
+        anim = GetComponent<Animator>();
+
+        //randomize the idle animation between zombies
+        AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);//could replace 0 by any other animation layer index
+
+        anim.Play(state.fullPathHash, -1, Random.Range(0f, 4f));
     }
 
     // Update is called once per frame
@@ -90,7 +97,12 @@ public class EnemyPatrolling : MonoBehaviour
             if (transform.rotation == q)
             {
                 transform.Translate(Vector3.right * Time.deltaTime * enemySpeed);
+                anim.SetBool("isMoving", true);
             }
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
         }
 
 
