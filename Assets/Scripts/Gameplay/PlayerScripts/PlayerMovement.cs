@@ -31,16 +31,6 @@ public class PlayerMovement : MonoBehaviour
     {
         playerRigidbody.velocity = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * moveSpeed;
 
-        if(Mathf.Abs(playerRigidbody.velocity.x) > 0 || Mathf.Abs(playerRigidbody.velocity.y) > 0)
-        {
-            anim.SetFloat("Speed", 1);
-        }
-        else
-        {
-            anim.SetFloat("Speed", 0);
-        }
-
-
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
         angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
