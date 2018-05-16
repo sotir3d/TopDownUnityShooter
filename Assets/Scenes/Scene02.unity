@@ -648,14 +648,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114144953365579336, guid: 5413f71247c2c1c419f924015791e152,
-        type: 2}
-      propertyPath: playerTransform
-      value: 
-      objectReference: {fileID: 1550838660}
     - target: {fileID: 114623942155454718, guid: 5413f71247c2c1c419f924015791e152,
         type: 2}
       propertyPath: playerCharacter
+      value: 
+      objectReference: {fileID: 1550838660}
+    - target: {fileID: 114144953365579336, guid: 5413f71247c2c1c419f924015791e152,
+        type: 2}
+      propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1550838660}
     m_RemovedComponents: []
@@ -868,26 +868,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1406673755629940, guid: 324951ed0eca38445836b49253d082d0, type: 2}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114129374016703728, guid: 324951ed0eca38445836b49253d082d0,
-        type: 2}
-      propertyPath: bulletNoiseRadius
-      value: 
-      objectReference: {fileID: 1556164392}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 324951ed0eca38445836b49253d082d0, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1550838660 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4475643247839262, guid: 324951ed0eca38445836b49253d082d0,
-    type: 2}
-  m_PrefabInternal: {fileID: 1297989598}
---- !u!1 &1556164392 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1406673755629940, guid: 324951ed0eca38445836b49253d082d0,
     type: 2}
   m_PrefabInternal: {fileID: 1297989598}
 --- !u!1 &1556795176

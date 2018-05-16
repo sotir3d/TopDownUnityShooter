@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletNoise : MonoBehaviour
 {
     List<GameObject> enemies = new List<GameObject>();
+    List<GameObject> iterateEnemies = new List<GameObject>();
 
     // Use this for initialization
     void Start()
@@ -15,10 +16,11 @@ public class BulletNoise : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        iterateEnemies = enemies;
         // deletes dead enemies out of the list
-        for (int i = 0; i < enemies.Count; i++)
+        for (int i = 0; i < iterateEnemies.Count; i++)
         {
-            if (enemies[i] == null)
+            if (iterateEnemies[i] == null)
             {
                 enemies.Remove(enemies[i]);
             }

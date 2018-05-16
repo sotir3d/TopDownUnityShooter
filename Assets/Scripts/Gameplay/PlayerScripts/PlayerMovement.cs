@@ -38,5 +38,14 @@ public class PlayerMovement : MonoBehaviour
         playerRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = playerRotation;
 
+        if (Mathf.Abs(playerRigidbody.velocity.x) > 0 || Mathf.Abs(playerRigidbody.velocity.y) > 0)
+        {
+            anim.SetFloat("Speed", 1);
+        }
+        else
+        {
+            anim.SetFloat("Speed", 0);
+        }
+
     }
 }

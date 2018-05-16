@@ -302,7 +302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0603267c40ebd2247a6861a81d25e717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawn: {fileID: 1905768512731154}
 --- !u!114 &114129374016703728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,10 +313,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f35c31e64299404e93b747c7ade8681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTransform: {fileID: 4920448503581288}
+  bulletSpawn: {fileID: 1905768512731154}
   bullet: {fileID: 1317161802660994, guid: f9086690cc9b249409a41feae945bc19, type: 2}
   bulletNoiseRadius: {fileID: 1406673755629940}
   gunShot: {fileID: 0}
+  fireRate: 0.25
 --- !u!114 &114247972308230606
 MonoBehaviour:
   m_ObjectHideFlags: 1
