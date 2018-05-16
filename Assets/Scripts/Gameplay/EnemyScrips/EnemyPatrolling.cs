@@ -83,26 +83,28 @@ public class EnemyPatrolling : MonoBehaviour
             turnSpeed = turnSpeedRun;
         }
 
-
-        if (Vector3.Distance(currentPatrolPoint.position, transform.position) > 0.1f)
+        if (currentPatrolPoint != null)
         {
-            // get the angle between enemy and the next patrol point
-            patrolPointDir = currentPatrolPoint.position - transform.position;
-            angle = Mathf.Atan2(patrolPointDir.y, patrolPointDir.x) * Mathf.Rad2Deg;
-
-            // rotate the enemy toward the next patrol point, after rotation is finished, move towards patrol point
-            q = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, q, turnSpeed);
-
-            if (transform.rotation == q)
+            if (Vector3.Distance(currentPatrolPoint.position, transform.position) > 0.1f)
             {
-                transform.Translate(Vector3.right * Time.deltaTime * enemySpeed);
-                anim.SetBool("isMoving", true);
+                // get the angle between enemy and the next patrol point
+                patrolPointDir = currentPatrolPoint.position - transform.position;
+                angle = Mathf.Atan2(patrolPointDir.y, patrolPointDir.x) * Mathf.Rad2Deg;
+
+                // rotate the enemy toward the next patrol point, after rotation is finished, move towards patrol point
+                q = Quaternion.AngleAxis(angle, Vector3.forward);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, q, turnSpeed);
+
+                if (transform.rotation == q)
+                {
+                    transform.Translate(Vector3.right * Time.deltaTime * enemySpeed);
+                    anim.SetBool("isMoving", true);
+                }
             }
-        }
-        else
-        {
-            anim.SetBool("isMoving", false);
+            else
+            {
+                anim.SetBool("isMoving", false);
+            }
         }
 
 
