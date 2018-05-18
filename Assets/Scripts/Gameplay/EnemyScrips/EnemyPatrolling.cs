@@ -8,7 +8,7 @@ public class EnemyPatrolling : MonoBehaviour
     public Transform[] patrolPoints;
 
     public float turnSpeedWalk = 5;
-    public float turnSpeedRun = 180;
+    public float turnSpeedRun = 30;
 
     public Transform playerTransform;
 
@@ -43,16 +43,14 @@ public class EnemyPatrolling : MonoBehaviour
         destinationSetter = GetComponent<AIDestinationSetter>();
         aiLerp = GetComponent<AILerp>();
 
-        enemySpeed = enemySpeedWalk;
-        
         currentPatrolIndex = 0;
         currentPatrolPoint = patrolPoints[currentPatrolIndex];
 
         anim = GetComponent<Animator>();
 
-        
+
         aiLerp.speed = enemySpeedWalk;
-        
+
         //randomize the idle animation between zombies
         AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);//could replace 0 by any other animation layer index
 
@@ -92,8 +90,6 @@ public class EnemyPatrolling : MonoBehaviour
         if (isSeeingPlayer == true)
         {
             currentPatrolPoint = playerTransform;
-            enemySpeed = enemySpeedRun;
-            turnSpeed = turnSpeedRun;
             aiLerp.speed = enemySpeedRun;
             aiLerp.repathRate = 0;
         }
@@ -109,7 +105,7 @@ public class EnemyPatrolling : MonoBehaviour
                 // // rotate the enemy toward the next patrol point, after rotation is finished, move towards patrol point
                 // q = Quaternion.AngleAxis(angle, Vector3.forward);
                 // //transform.rotation = Quaternion.RotateTowards(transform.rotation, q, turnSpeed);
-                
+
                 // if (transform.rotation == q)
                 // {
                 //     //transform.Translate(Vector3.right * Time.deltaTime * enemySpeed);
