@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            playerRigidbody.velocity = new Vector3(0, 0, 0);
             anim.SetFloat("Speed", 0);
         }
 
