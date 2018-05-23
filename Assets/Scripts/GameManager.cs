@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,9 +21,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void Restart()
+    public void ToMainMenu()
     {
-        Debug.Log("restarting");
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1.0f;
     }
 
     public void ToggleVictoryScreen()
@@ -30,11 +32,8 @@ public class GameManager : MonoBehaviour
         // not the optimal way but for the sake of readability
         if (GetComponentInChildren<Canvas>().enabled == false)
         {
-
             GetComponentInChildren<Canvas>().enabled = true;
             Time.timeScale = 0f;
         }
-
-        Debug.Log("GAMEMANAGER:: TimeScale: " + Time.timeScale);
     }
 }

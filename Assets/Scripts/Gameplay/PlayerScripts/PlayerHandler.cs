@@ -7,7 +7,7 @@ public class PlayerHandler : MonoBehaviour
 {
     Animator anim;
 
-    public int weapon;
+    public int currentWeapon;
 
     public GameObject gameManager;
 
@@ -16,7 +16,7 @@ public class PlayerHandler : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
-        anim.SetInteger("WeaponSwap", weapon);
+        currentWeapon = 0;
     }
 
     private void Update()
@@ -26,6 +26,8 @@ public class PlayerHandler : MonoBehaviour
         {
             gameManager.GetComponent<GameManager>().ToggleVictoryScreen();
         }
+
+        anim.SetInteger("WeaponSwap", currentWeapon);
     }
 
     public void Death()
@@ -34,6 +36,19 @@ public class PlayerHandler : MonoBehaviour
         Destroy(gameObject);
         SceneManager.LoadScene(0);
     }
+    
+    public void SetCurrentWeapon(int newWeapon)
+    {
+        currentWeapon = newWeapon;
 
+        if(newWeapon == 0)
+        {
+            GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRatePistol;
+        }
+        else if (newWeapon == 1)
+        {
+            GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateRifle;
+        }
+    }
 
 }
