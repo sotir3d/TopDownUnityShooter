@@ -24,7 +24,7 @@ public class PlayerHandler : MonoBehaviour
         Debug.Log(gameManager.GetComponent<GameManager>().enemyCount);
         if (gameManager.GetComponent<GameManager>().enemyCount == 0)
         {
-            Debug.Log("Victory");
+            gameManager.GetComponent<GameManager>().ToggleVictoryScreen();
         }
     }
 
