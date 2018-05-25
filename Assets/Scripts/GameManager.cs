@@ -14,13 +14,7 @@ public class GameManager : MonoBehaviour
     {
         GetComponentInChildren<Canvas>().enabled = false;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    
     public void ToMainMenu()
     {
         SceneManager.LoadScene(0);

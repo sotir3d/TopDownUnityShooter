@@ -32,7 +32,6 @@ public class PlayerHandler : MonoBehaviour
 
     public void Death()
     {
-        //GameplayHandler.enemyCount = 0;
         Destroy(gameObject);
         SceneManager.LoadScene(0);
     }

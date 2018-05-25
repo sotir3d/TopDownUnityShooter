@@ -32,7 +32,14 @@ public class BulletScript : MonoBehaviour
 
         if (collision.gameObject.tag != "Projectile")
         {
-            Destroy(gameObject);
+            Destroy(GetComponent<Rigidbody2D>());
+            Destroy(GetComponent<SpriteRenderer>());
+            Invoke("DestroyBullet", 0.2f);
         }
+    }
+
+    void DestroyBullet()
+    {
+        Destroy(gameObject);
     }
 }

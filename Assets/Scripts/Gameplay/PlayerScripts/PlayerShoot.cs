@@ -32,7 +32,7 @@ public class PlayerShoot : MonoBehaviour
             gunShot.Play();
             Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
             bulletNoiseRadius.GetComponent<BulletNoise>().notifyEnemies();
-
+            
             anim.SetTrigger("Shoot");
             bulletAnim.SetTrigger("Shoot");
             lastFired = Time.realtimeSinceStartup;

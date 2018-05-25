@@ -13,7 +13,6 @@ public class EnemyHandler : MonoBehaviour
 
     public void Death()
     {
-        //gameObject.SetActive(false);
         gameManager.GetComponent<GameManager>().enemyCount--;
         Destroy(gameObject);
     }

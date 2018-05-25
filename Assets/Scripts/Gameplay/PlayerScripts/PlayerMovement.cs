@@ -20,9 +20,6 @@ public class PlayerMovement : MonoBehaviour
         playerRotation = transform.rotation;
         playerRigidbody = GetComponent<Rigidbody2D>();
 
-        playerRotation.z = 90;
-        transform.rotation = playerRotation;
-
         anim = GetComponent<Animator>();
     }
 
