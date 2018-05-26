@@ -2026,7 +2026,7 @@ Prefab:
     - target: {fileID: 114391351810531692, guid: 8231ef07a0ddbb64a9adb1312326fb72,
         type: 2}
       propertyPath: weaponValue
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8231ef07a0ddbb64a9adb1312326fb72, type: 2}
@@ -4262,6 +4262,11 @@ Prefab:
         type: 2}
       propertyPath: m_FlipX
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114391351810531692, guid: 8231ef07a0ddbb64a9adb1312326fb72,
+        type: 2}
+      propertyPath: weaponValue
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8231ef07a0ddbb64a9adb1312326fb72, type: 2}

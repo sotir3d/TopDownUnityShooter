@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GlobalValues
 {
+    public static float fireRateMelee = 0.3f;
+
     public static float fireRatePistol = 0.25f;
     public static int ammoCountPistol = 10;
 

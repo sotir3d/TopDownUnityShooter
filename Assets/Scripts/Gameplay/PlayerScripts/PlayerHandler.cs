@@ -40,7 +40,11 @@ public class PlayerHandler : MonoBehaviour
     {
         currentWeapon = newWeapon;
 
-        if(newWeapon == 1)
+        if (newWeapon == 0)
+        {
+            GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateMelee;
+        }
+        else if(newWeapon == 1)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRatePistol;
             GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountPistol;
