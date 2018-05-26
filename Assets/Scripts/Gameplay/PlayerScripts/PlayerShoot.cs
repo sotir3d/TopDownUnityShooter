@@ -9,7 +9,7 @@ public class PlayerShoot : MonoBehaviour
     public GameObject bulletNoiseRadius;
     public AudioSource gunShot;
 
-    public float fireRate = 0.25f;
+    public float fireRate = GlobalValues.fireRateMelee;
     public int ammoCount = 0;
 
     Animator anim;
@@ -36,6 +36,7 @@ public class PlayerShoot : MonoBehaviour
             if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate))
             {
                 anim.SetTrigger("Shoot");
+                lastFired = Time.realtimeSinceStartup;
             }
         }
         else if (playerHandler.currentWeapon == 1 || playerHandler.currentWeapon == 2)

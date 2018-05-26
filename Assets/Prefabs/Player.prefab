@@ -320,7 +320,7 @@ MonoBehaviour:
   bullet: {fileID: 1317161802660994, guid: f9086690cc9b249409a41feae945bc19, type: 2}
   bulletNoiseRadius: {fileID: 1406673755629940}
   gunShot: {fileID: 0}
-  fireRate: 0.25
+  fireRate: 0.3
   ammoCount: 0
 --- !u!114 &114247972308230606
 MonoBehaviour:
