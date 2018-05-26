@@ -10,6 +10,7 @@ public class PlayerHandler : MonoBehaviour
     public int currentWeapon;
 
     public GameObject gameManager;
+    public GameObject uiManager;
 
 
     private void Start()
@@ -21,10 +22,9 @@ public class PlayerHandler : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(gameManager.GetComponent<GameManager>().enemyCount);
         if (gameManager.GetComponent<GameManager>().enemyCount == 0)
         {
-            gameManager.GetComponent<GameManager>().ToggleVictoryScreen();
+            gameManager.GetComponent<UIManager>().ToggleVictoryScreen();
         }
 
         anim.SetInteger("WeaponSwap", currentWeapon);
@@ -40,13 +40,15 @@ public class PlayerHandler : MonoBehaviour
     {
         currentWeapon = newWeapon;
 
-        if(newWeapon == 0)
+        if(newWeapon == 1)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRatePistol;
+            GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountPistol;
         }
-        else if (newWeapon == 1)
+        else if (newWeapon == 2)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateRifle;
+            GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountRifle;
         }
     }
 

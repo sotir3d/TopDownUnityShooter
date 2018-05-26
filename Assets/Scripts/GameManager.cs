@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,8 +12,7 @@ public class GameManager : MonoBehaviour
 
     // Use this for initialization
     void Start()
-    {
-        GetComponentInChildren<Canvas>().enabled = false;
+    {        
     }
     
     public void ToMainMenu()
@@ -21,13 +21,4 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
-    public void ToggleVictoryScreen()
-    {
-        // not the optimal way but for the sake of readability
-        if (GetComponentInChildren<Canvas>().enabled == false)
-        {
-            GetComponentInChildren<Canvas>().enabled = true;
-            Time.timeScale = 0f;
-        }
-    }
 }

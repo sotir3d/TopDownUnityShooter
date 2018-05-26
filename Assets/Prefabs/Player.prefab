@@ -304,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWeapon: 0
   gameManager: {fileID: 0}
+  uiManager: {fileID: 0}
 --- !u!114 &114129374016703728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,6 +321,7 @@ MonoBehaviour:
   bulletNoiseRadius: {fileID: 1406673755629940}
   gunShot: {fileID: 0}
   fireRate: 0.25
+  ammoCount: 10
 --- !u!114 &114247972308230606
 MonoBehaviour:
   m_ObjectHideFlags: 1

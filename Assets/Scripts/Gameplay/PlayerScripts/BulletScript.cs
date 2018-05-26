@@ -34,6 +34,7 @@ public class BulletScript : MonoBehaviour
         {
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<SpriteRenderer>());
+            Destroy(GetComponent<BoxCollider2D>());
             Invoke("DestroyBullet", 0.2f);
         }
     }
