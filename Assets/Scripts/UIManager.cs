@@ -23,7 +23,10 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        ammoCountText.text = "Ammo: " + player.GetComponent<PlayerShoot>().ammoCount;
+        if(player != null)
+        {
+            ammoCountText.text = "Ammo: " + player.GetComponent<PlayerShoot>().ammoCount;
+        }
     }
 
     public void ToggleVictoryScreen()

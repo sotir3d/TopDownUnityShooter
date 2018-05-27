@@ -7,6 +7,8 @@ public class PlayerShoot : MonoBehaviour
     public GameObject bulletSpawn;
     public GameObject bullet;
     public GameObject bulletNoiseRadius;
+    public GameObject meleeHitBox;
+
     public AudioSource gunShot;
 
     public float fireRate = GlobalValues.fireRateMelee;
@@ -31,14 +33,17 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 0 = Knife
         if (playerHandler.currentWeapon == 0)
         {
             if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate))
             {
                 anim.SetTrigger("Shoot");
                 lastFired = Time.realtimeSinceStartup;
+                meleeHitBox.GetComponent<EnemyTracker>().DestroyEnemies();
             }
         }
+        // 1 = Pistol, 2 = Rifle
         else if (playerHandler.currentWeapon == 1 || playerHandler.currentWeapon == 2)
         {
             if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate) && ammoCount > 0)
@@ -46,7 +51,7 @@ public class PlayerShoot : MonoBehaviour
                 gunShot.pitch = Random.Range(0.8f, 1.3f);
                 gunShot.Play();
                 Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
-                bulletNoiseRadius.GetComponent<BulletNoise>().notifyEnemies();
+                bulletNoiseRadius.GetComponent<EnemyTracker>().NotifyEnemies();
 
                 anim.SetTrigger("Shoot");
                 bulletAnim.SetTrigger("Shoot");

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletNoise : MonoBehaviour
+public class EnemyTracker : MonoBehaviour
 {
     List<GameObject> enemies = new List<GameObject>();
     List<GameObject> iterateEnemies = new List<GameObject>();
@@ -17,6 +17,7 @@ public class BulletNoise : MonoBehaviour
     void Update()
     {
         iterateEnemies = enemies;
+        Debug.Log(iterateEnemies.Count);
         // deletes dead enemies out of the list
         for (int i = 0; i < iterateEnemies.Count; i++)
         {
@@ -44,13 +45,22 @@ public class BulletNoise : MonoBehaviour
         enemies.Remove(collision.gameObject);
     }
 
-    public void notifyEnemies()
+    public void NotifyEnemies()
     {
         int i = 0;
         foreach (var enemy in enemies)
         {
             i++;
             enemy.GetComponent<EnemyPatrolling>().CheckSightlineToPlayer();
+        }
+    }
+
+    public void DestroyEnemies()
+    {
+        for (int i = 0; i < iterateEnemies.Count; i++)
+        {
+            Debug.Log("DestroyEnemies");
+            enemies[i].GetComponentInParent<EnemyHandler>().Death();
         }
     }
 }
