@@ -25,8 +25,6 @@ public class PickupScript : MonoBehaviour
     {
         if (collision.gameObject == player)
         {
-            Debug.Log("test");
-
             player.GetComponent<PlayerHandler>().SetCurrentWeapon(weaponValue);
 
             Destroy(gameObject);

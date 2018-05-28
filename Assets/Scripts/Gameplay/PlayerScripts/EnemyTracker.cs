@@ -17,7 +17,6 @@ public class EnemyTracker : MonoBehaviour
     void Update()
     {
         iterateEnemies = enemies;
-        Debug.Log(iterateEnemies.Count);
         // deletes dead enemies out of the list
         for (int i = 0; i < iterateEnemies.Count; i++)
         {
