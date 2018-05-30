@@ -280,10 +280,17 @@ MonoBehaviour:
   bullet: {fileID: 1317161802660994, guid: f9086690cc9b249409a41feae945bc19, type: 2}
   bulletNoiseRadius: {fileID: 1406673755629940}
   meleeHitBox: {fileID: 1911016820818522}
+  pistolPickup: {fileID: 1569536050318144, guid: 8231ef07a0ddbb64a9adb1312326fb72,
+    type: 2}
+  riflePickup: {fileID: 1569536050318144, guid: fbc89190c30100c4785de8f5c484e617,
+    type: 2}
+  shotgunPickup: {fileID: 1569536050318144, guid: 8c9fccbeff24b394080bf714ec7b41d7,
+    type: 2}
   pistolSound: {fileID: 82718302356396464, guid: 11719caee9a30c54c8976257d3fcbb54,
     type: 2}
   shotgunSound: {fileID: 82718302356396464, guid: a865e0a8a9d951b4a96c4e949e8ea242,
     type: 2}
+  currentWeapon: 0
   shotgunPellets: 10
   fireRate: 0.3
   ammoCount: 0

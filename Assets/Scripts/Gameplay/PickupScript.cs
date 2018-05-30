@@ -22,6 +22,7 @@ public class PickupScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(rotationSpeed);
         transform.Rotate(0, 0, rotationSpeed);
     }
 
@@ -34,7 +35,12 @@ public class PickupScript : MonoBehaviour
 
             Destroy(gameObject);
         }
-        else if(collision.gameObject.tag == "Enemy" && currentlyThrowing)
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy" && currentlyThrowing)
         {
             collision.gameObject.GetComponentInParent<EnemyHandler>().Death();
         }
@@ -45,6 +51,7 @@ public class PickupScript : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(throwSpeed, 0));
         rotationSpeed = 20;
         currentlyThrowing = true;
+        GetComponent<BoxCollider2D>().isTrigger = false;
         Invoke("StopThrow", 0.3f);
     }
 
@@ -52,13 +59,11 @@ public class PickupScript : MonoBehaviour
     {
         float currentSpeed;
         currentSpeed = throwSpeed;
-        while (currentSpeed > 0.1f)
-        {
-            currentSpeed = Mathf.Lerp(currentSpeed, 0, 1f);
-            GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(currentSpeed, 0));
-        }
-
+        
         rotationSpeed = 0;
+
+        GetComponent<BoxCollider2D>().isTrigger = true;
+        GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(0, 0));
         currentlyThrowing = false;
     }
 }
