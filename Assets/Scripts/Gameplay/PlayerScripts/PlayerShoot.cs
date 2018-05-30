@@ -10,8 +10,14 @@ public class PlayerShoot : MonoBehaviour
     public GameObject bulletNoiseRadius;
     public GameObject meleeHitBox;
 
+    public GameObject pistolPickup;
+    public GameObject riflePickup;
+    public GameObject shotgunPickup;
+
+
     public AudioClip pistolSound;
     public AudioClip shotgunSound;
+    public int currentWeapon = 0;
     AudioSource weaponSound;
 
     public float shotgunPellets = 10;
@@ -101,5 +107,30 @@ public class PlayerShoot : MonoBehaviour
                 }
             }
         }
+
+        if(Input.GetButtonDown("Fire3"))
+        {
+            if(currentWeapon == 1)
+            {
+                ThrowWeapon(pistolPickup);
+            }
+            else if (currentWeapon == 2)
+            {
+                ThrowWeapon(riflePickup);
+            }
+            else if (currentWeapon == 3)
+            {
+                ThrowWeapon(shotgunPickup);
+            }
+        }
+    }
+
+    void ThrowWeapon(GameObject currentThrownWeapon)
+    {
+        GameObject thrownWeapon;
+        GetComponent<PlayerHandler>().SetCurrentWeapon(0);
+        thrownWeapon = Instantiate(currentThrownWeapon, bulletSpawn.transform.position, transform.rotation);
+        thrownWeapon.GetComponent<PickupScript>().ThrowWeapon();
+        thrownWeapon.GetComponent<PickupScript>().player = gameObject;
     }
 }

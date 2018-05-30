@@ -31,7 +31,6 @@ public class PlayerHandler : MonoBehaviour
 
         if (swapWeapon == true)
         {
-            Debug.Log("swap");
             anim.SetInteger("WeaponSwap", currentWeapon);
             swapWeapon = false;
         }
@@ -51,21 +50,26 @@ public class PlayerHandler : MonoBehaviour
         if (newWeapon == 0)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateMelee;
+            GetComponent<PlayerShoot>().ammoCount = 0;
+            GetComponent<PlayerShoot>().currentWeapon = 0;
         }
         else if (newWeapon == 1)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRatePistol;
             GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountPistol;
+            GetComponent<PlayerShoot>().currentWeapon = 1;
         }
         else if (newWeapon == 2)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateRifle;
             GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountRifle;
+            GetComponent<PlayerShoot>().currentWeapon = 2;
         }
         else if (newWeapon == 3)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateShotgun;
             GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountShotgun;
+            GetComponent<PlayerShoot>().currentWeapon = 3;
         }
     }
 
