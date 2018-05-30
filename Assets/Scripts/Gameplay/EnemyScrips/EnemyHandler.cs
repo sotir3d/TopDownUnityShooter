@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyHandler : MonoBehaviour
 {
     public GameObject gameManager;
+    public GameObject enemyCharacter;
+    public GameObject bloodSpatter;
 
     public void Start()
     {
@@ -13,6 +15,7 @@ public class EnemyHandler : MonoBehaviour
 
     public void Death()
     {
+        Instantiate(bloodSpatter, enemyCharacter.transform.position, enemyCharacter.transform.rotation);
         gameManager.GetComponent<GameManager>().enemyCount--;
         Destroy(gameObject);
     }

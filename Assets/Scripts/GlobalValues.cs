@@ -20,3 +20,11 @@ public class GlobalValues
 
 
 }
+
+public enum WeaponType
+{
+    Knife = 0,
+    Pistol = 1,
+    Rifle = 2,
+    Shotgun = 3
+};

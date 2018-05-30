@@ -7,7 +7,7 @@ public class PlayerHandler : MonoBehaviour
 {
     Animator anim;
 
-    public int currentWeapon;
+    public WeaponType currentWeapon;
 
     public GameObject gameManager;
     public GameObject uiManager;
@@ -19,7 +19,7 @@ public class PlayerHandler : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
-        currentWeapon = 0;
+        currentWeapon = WeaponType.Pistol;
     }
 
     private void Update()
@@ -31,7 +31,7 @@ public class PlayerHandler : MonoBehaviour
 
         if (swapWeapon == true)
         {
-            anim.SetInteger("WeaponSwap", currentWeapon);
+            anim.SetInteger("WeaponSwap", (int)currentWeapon);
             swapWeapon = false;
         }
     }
@@ -42,34 +42,34 @@ public class PlayerHandler : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void SetCurrentWeapon(int newWeapon)
+    public void SetCurrentWeapon(WeaponType newWeapon)
     {
         currentWeapon = newWeapon;
         swapWeapon = true;
 
-        if (newWeapon == 0)
+        if (newWeapon == WeaponType.Knife)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateMelee;
             GetComponent<PlayerShoot>().ammoCount = 0;
-            GetComponent<PlayerShoot>().currentWeapon = 0;
+            GetComponent<PlayerShoot>().currentWeapon = newWeapon;
         }
-        else if (newWeapon == 1)
+        else if (newWeapon == WeaponType.Pistol)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRatePistol;
             GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountPistol;
-            GetComponent<PlayerShoot>().currentWeapon = 1;
+            GetComponent<PlayerShoot>().currentWeapon = newWeapon;
         }
-        else if (newWeapon == 2)
+        else if (newWeapon == WeaponType.Rifle)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateRifle;
             GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountRifle;
-            GetComponent<PlayerShoot>().currentWeapon = 2;
+            GetComponent<PlayerShoot>().currentWeapon = newWeapon;
         }
-        else if (newWeapon == 3)
+        else if (newWeapon == WeaponType.Shotgun)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateShotgun;
             GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountShotgun;
-            GetComponent<PlayerShoot>().currentWeapon = 3;
+            GetComponent<PlayerShoot>().currentWeapon = newWeapon;
         }
     }
 

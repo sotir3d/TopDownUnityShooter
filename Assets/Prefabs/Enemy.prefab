@@ -228,6 +228,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  enemyCharacter: {fileID: 1090718440780174}
+  bloodSpatter: {fileID: 1064072916470510, guid: 80a0e42e46e365749ad41d1fd4a77942,
+    type: 2}
 --- !u!114 &114034553485666166
 MonoBehaviour:
   m_ObjectHideFlags: 1

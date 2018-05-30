@@ -17,7 +17,7 @@ public class PlayerShoot : MonoBehaviour
 
     public AudioClip pistolSound;
     public AudioClip shotgunSound;
-    public int currentWeapon = 0;
+    public WeaponType currentWeapon = WeaponType.Knife;
     AudioSource weaponSound;
 
     public float shotgunPellets = 10;
@@ -48,8 +48,7 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 0 = Knife
-        if (playerHandler.currentWeapon == 0)
+        if (playerHandler.currentWeapon == WeaponType.Knife)
         {
             if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate))
             {
@@ -58,8 +57,7 @@ public class PlayerShoot : MonoBehaviour
                 meleeHitBox.GetComponent<EnemyTracker>().DestroyEnemies();
             }
         }
-        // 1 = Pistol, 2 = Rifle
-        else if (playerHandler.currentWeapon == 1 || playerHandler.currentWeapon == 2)
+        else if (playerHandler.currentWeapon == WeaponType.Pistol || playerHandler.currentWeapon == WeaponType.Rifle)
         {
             if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate) && ammoCount > 0)
             {
@@ -81,7 +79,7 @@ public class PlayerShoot : MonoBehaviour
             }
         }
         // 3 = Shotgun
-        else if (playerHandler.currentWeapon == 3)
+        else if (playerHandler.currentWeapon == WeaponType.Shotgun)
         {
             if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate) && ammoCount > 0)
             {
@@ -110,15 +108,15 @@ public class PlayerShoot : MonoBehaviour
 
         if(Input.GetButtonDown("Fire3"))
         {
-            if(currentWeapon == 1)
+            if(currentWeapon == WeaponType.Pistol)
             {
                 ThrowWeapon(pistolPickup);
             }
-            else if (currentWeapon == 2)
+            else if (currentWeapon == WeaponType.Rifle)
             {
                 ThrowWeapon(riflePickup);
             }
-            else if (currentWeapon == 3)
+            else if (currentWeapon == WeaponType.Shotgun)
             {
                 ThrowWeapon(shotgunPickup);
             }

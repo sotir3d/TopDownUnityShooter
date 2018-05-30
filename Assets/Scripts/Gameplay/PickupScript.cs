@@ -7,12 +7,11 @@ public class PickupScript : MonoBehaviour
 
     public GameObject player;
 
-    public int weaponValue = 1;
+    public WeaponType weaponType;
 
     float throwSpeed = 20;
     float rotationSpeed = 0;
     bool currentlyThrowing = false;
-
 
     // Use this for initialization
     void Start()
@@ -22,16 +21,14 @@ public class PickupScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(rotationSpeed);
         transform.Rotate(0, 0, rotationSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject == player && !currentlyThrowing)
         {
-            player.GetComponent<PlayerHandler>().SetCurrentWeapon(weaponValue);
+            player.GetComponent<PlayerHandler>().SetCurrentWeapon(weaponType);
 
             Destroy(gameObject);
         }
@@ -67,3 +64,4 @@ public class PickupScript : MonoBehaviour
         currentlyThrowing = false;
     }
 }
+
