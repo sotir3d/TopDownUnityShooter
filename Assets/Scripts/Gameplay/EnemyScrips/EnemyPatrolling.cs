@@ -19,9 +19,9 @@ public class EnemyPatrolling : MonoBehaviour
 
     Animator anim;
 
-    AIDestinationSetter destinationSetter;
-    AILerp aiLerp;
-
+	
+	
+	
     float enemySpeed;
     float turnSpeed = 5;
     Vector3 patrolPointDir;
@@ -40,8 +40,7 @@ public class EnemyPatrolling : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        destinationSetter = GetComponent<AIDestinationSetter>();
-        aiLerp = GetComponent<AILerp>();
+        enemySpeed = enemySpeedWalk;
 
         currentPatrolIndex = 0;
         currentPatrolPoint = patrolPoints[currentPatrolIndex];
@@ -49,7 +48,8 @@ public class EnemyPatrolling : MonoBehaviour
         anim = GetComponent<Animator>();
 
 
-        aiLerp.speed = enemySpeedWalk;
+        
+		
 
         //randomize the idle animation between zombies
         AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);//could replace 0 by any other animation layer index
@@ -64,8 +64,9 @@ public class EnemyPatrolling : MonoBehaviour
         if ((Time.realtimeSinceStartup - lastTimeSeenPlayer) > maxLastSeenTime && isSeeingPlayer == true)
         {
             // when losing sight to player, move back towards the last targeted patrol point
-            aiLerp.speed = enemySpeedWalk;
-            aiLerp.repathRate = 0.5f;
+            enemySpeed = enemySpeedWalk;
+            turnSpeed = turnSpeedWalk;
+
             isSeeingPlayer = false;
             currentPatrolPoint = patrolPoints[currentPatrolIndex];
 
@@ -90,30 +91,30 @@ public class EnemyPatrolling : MonoBehaviour
         if (isSeeingPlayer == true)
         {
             currentPatrolPoint = playerTransform;
-            aiLerp.speed = enemySpeedRun;
-            aiLerp.repathRate = 0;
+            enemySpeed = enemySpeedRun;
+            turnSpeed = turnSpeedRun;
         }
 
         if (currentPatrolPoint != null)
         {
             if (Vector3.Distance(currentPatrolPoint.position, transform.position) > 0.1f)
             {
-                // // get the angle between enemy and the next patrol point
-                // patrolPointDir = currentPatrolPoint.position - transform.position;
-                // angle = Mathf.Atan2(patrolPointDir.y, patrolPointDir.x) * Mathf.Rad2Deg;
+                // get the angle between enemy and the next patrol point
+                patrolPointDir = currentPatrolPoint.position - transform.position;
+                angle = Mathf.Atan2(patrolPointDir.y, patrolPointDir.x) * Mathf.Rad2Deg;
 
-                // // rotate the enemy toward the next patrol point, after rotation is finished, move towards patrol point
-                // q = Quaternion.AngleAxis(angle, Vector3.forward);
-                // //transform.rotation = Quaternion.RotateTowards(transform.rotation, q, turnSpeed);
+                // rotate the enemy toward the next patrol point, after rotation is finished, move towards patrol point
+                q = Quaternion.AngleAxis(angle, Vector3.forward);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, q, turnSpeed);
 
-                // if (transform.rotation == q)
-                // {
-                //     //transform.Translate(Vector3.right * Time.deltaTime * enemySpeed);
-                //     anim.SetBool("isMoving", true);
-                // }
+                if (transform.rotation == q)
+                {
+                    transform.Translate(Vector3.right * Time.deltaTime * enemySpeed);
+                    anim.SetBool("isMoving", true);
+                }
 
                 anim.SetBool("isMoving", true);
-                destinationSetter.target = currentPatrolPoint;
+                //destinationSetter.target = currentPatrolPoint;
             }
             else
             {

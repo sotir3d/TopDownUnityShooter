@@ -50,7 +50,8 @@ public class EnemyTracker : MonoBehaviour
         foreach (var enemy in enemies)
         {
             i++;
-            enemy.GetComponent<EnemyPatrolling>().CheckSightlineToPlayer();
+            if(enemy != null)
+                enemy.GetComponent<EnemyPatrolling>().CheckSightlineToPlayer();
         }
     }
 
