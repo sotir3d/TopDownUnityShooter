@@ -17,8 +17,10 @@ public class EnemyPatrolling : MonoBehaviour
     public float enemySpeedWalk = 2;
     public float enemySpeedRun = 5;
 
+    public AudioClip attackSound;
     Animator anim;
 
+    AudioSource zombieAudioSource;
 	
 	
 	
@@ -37,6 +39,8 @@ public class EnemyPatrolling : MonoBehaviour
 
     float maxLastSeenTime = 2;
 
+    bool isScreaming = false;
+
     // Use this for initialization
     void Start()
     {
@@ -47,10 +51,9 @@ public class EnemyPatrolling : MonoBehaviour
 
         anim = GetComponent<Animator>();
 
-
+        zombieAudioSource = GetComponent<AudioSource>();
+        zombieAudioSource.Play();
         
-		
-
         //randomize the idle animation between zombies
         AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);//could replace 0 by any other animation layer index
 
@@ -69,6 +72,7 @@ public class EnemyPatrolling : MonoBehaviour
 
             isSeeingPlayer = false;
             currentPatrolPoint = patrolPoints[currentPatrolIndex];
+            isScreaming = false;
 
         }
 
@@ -148,6 +152,12 @@ public class EnemyPatrolling : MonoBehaviour
     {
         lastTimeSeenPlayer = Time.realtimeSinceStartup;
         isSeeingPlayer = true;
+
+        if(!isScreaming)
+        {
+            zombieAudioSource.PlayOneShot(attackSound);
+            isScreaming = true;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
