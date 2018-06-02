@@ -5,14 +5,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 10f;
+    public GameObject feet;
 
     Vector2 direction;
     Quaternion playerRotation;
     Rigidbody2D playerRigidbody;
 
     Animator anim;
+    Animator feetAnim;
 
     float angle;
+    float horizontalInput;
+    float verticalInput;
 
     // Use this for initialization
     void Start()
@@ -21,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
 
         anim = GetComponent<Animator>();
+        feetAnim = feet.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -38,12 +43,64 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(playerRigidbody.velocity.x) > 0 || Mathf.Abs(playerRigidbody.velocity.y) > 0)
         {
             anim.SetFloat("Speed", 1);
+
+            SetFeetRotation();
+            feetAnim.SetFloat("Speed", 1);
         }
         else
         {
             playerRigidbody.velocity = new Vector3(0, 0, 0);
             anim.SetFloat("Speed", 0);
+            feetAnim.SetFloat("Speed", 0);
         }
 
+    }
+
+    void SetFeetRotation()
+    {
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+
+        //Up
+        if(horizontalInput == 0 && verticalInput == 1)
+        {
+            feet.transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+        // Up-Right
+        else if (horizontalInput == 1 && verticalInput == 1)
+        {
+            Debug.Log(verticalInput);
+            feet.transform.rotation = Quaternion.Euler(0, 0, 45);
+        }
+        //Right
+        else if (horizontalInput == 1 && verticalInput == 0)
+        {
+            feet.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        //Down-Right
+        else if (horizontalInput == 1 && verticalInput == -1)
+        {
+            feet.transform.rotation = Quaternion.Euler(0, 0, -45);
+        }
+        //Down
+        else if(horizontalInput == 0 && verticalInput == -1)
+        {
+            feet.transform.rotation = Quaternion.Euler(0, 0, -90);
+        }
+        //Down-Left
+        else if (horizontalInput == -1 && verticalInput == -1)
+        {
+            feet.transform.rotation = Quaternion.Euler(0, 0, 225);
+        }
+        //Left
+        else if(horizontalInput == -1 && verticalInput == 0)
+        {
+            feet.transform.rotation = Quaternion.Euler(0, 0, 180);
+        }
+        //Up-Left
+        else if (horizontalInput == -1 && verticalInput == 1)
+        {
+            feet.transform.rotation = Quaternion.Euler(0, 0, 135);
+        }
     }
 }

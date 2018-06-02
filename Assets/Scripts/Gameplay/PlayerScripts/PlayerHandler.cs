@@ -5,16 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHandler : MonoBehaviour
 {
-    Animator anim;
 
     public WeaponType currentWeapon;
 
     public GameObject gameManager;
     public GameObject uiManager;
+    public GameObject feet;
+
+    Animator anim;
+    Animator animFeet;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        animFeet = feet.GetComponent<Animator>();
 
         currentWeapon = WeaponType.Pistol;
     }
@@ -36,7 +40,8 @@ public class PlayerHandler : MonoBehaviour
     public void SetCurrentWeapon(WeaponType newWeapon)
     {
         anim.SetInteger("WeaponSwap", (int)newWeapon);
-
+        animFeet.SetInteger("WeaponSwap", (int)newWeapon);
+        
         if (newWeapon == WeaponType.Knife)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateMelee;
