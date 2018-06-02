@@ -2559,6 +2559,16 @@ Prefab:
       propertyPath: shotgunSound
       value: 
       objectReference: {fileID: 8300000, guid: 69187a1c18bfc2b4fbe335da3d6b61d4, type: 3}
+    - target: {fileID: 95199684335200260, guid: 324951ed0eca38445836b49253d082d0,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5c7fd4adf2c672c4b873c212471e3e1c, type: 2}
+    - target: {fileID: 114129374016703728, guid: 324951ed0eca38445836b49253d082d0,
+        type: 2}
+      propertyPath: currentWeapon
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 324951ed0eca38445836b49253d082d0, type: 2}
   m_IsPrefabParent: 0

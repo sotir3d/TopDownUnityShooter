@@ -12,9 +12,6 @@ public class PlayerHandler : MonoBehaviour
     public GameObject gameManager;
     public GameObject uiManager;
 
-    bool swapWeapon = false;
-
-
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -28,12 +25,6 @@ public class PlayerHandler : MonoBehaviour
         {
             uiManager.GetComponent<UIManager>().ToggleVictoryScreen();
         }
-
-        if (swapWeapon == true)
-        {
-            anim.SetInteger("WeaponSwap", (int)currentWeapon);
-            swapWeapon = false;
-        }
     }
 
     public void Death()
@@ -44,8 +35,7 @@ public class PlayerHandler : MonoBehaviour
 
     public void SetCurrentWeapon(WeaponType newWeapon)
     {
-        currentWeapon = newWeapon;
-        swapWeapon = true;
+        anim.SetInteger("WeaponSwap", (int)newWeapon);
 
         if (newWeapon == WeaponType.Knife)
         {

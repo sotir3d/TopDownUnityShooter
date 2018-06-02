@@ -18,7 +18,6 @@ public class CameraScript : MonoBehaviour
     Vector3 mouseDistanceFromPlayer;
 
     float activeCameraOffset;
-    float minCursorDistance = 0.1f;
 
     // Use this for initialization
     void Start()

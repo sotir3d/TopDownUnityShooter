@@ -43,12 +43,14 @@ public class PlayerShoot : MonoBehaviour
         bulletAnim = bulletSpawn.GetComponent<Animator>();
 
         playerHandler = GetComponentInParent<PlayerHandler>();
+        //playerHandler.SetCurrentWeapon(currentWeapon);
+        Debug.Log(playerHandler.currentWeapon);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerHandler.currentWeapon == WeaponType.Knife)
+        if (currentWeapon == WeaponType.Knife)
         {
             if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate))
             {
@@ -57,7 +59,7 @@ public class PlayerShoot : MonoBehaviour
                 meleeHitBox.GetComponent<EnemyTracker>().DestroyEnemies();
             }
         }
-        else if (playerHandler.currentWeapon == WeaponType.Pistol || playerHandler.currentWeapon == WeaponType.Rifle)
+        else if (currentWeapon == WeaponType.Pistol || currentWeapon == WeaponType.Rifle)
         {
             if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate) && ammoCount > 0)
             {
@@ -79,7 +81,7 @@ public class PlayerShoot : MonoBehaviour
             }
         }
         // 3 = Shotgun
-        else if (playerHandler.currentWeapon == WeaponType.Shotgun)
+        else if (currentWeapon == WeaponType.Shotgun)
         {
             if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate) && ammoCount > 0)
             {
@@ -126,7 +128,7 @@ public class PlayerShoot : MonoBehaviour
     void ThrowWeapon(GameObject currentThrownWeapon)
     {
         GameObject thrownWeapon;
-        GetComponent<PlayerHandler>().SetCurrentWeapon(0);
+        playerHandler.SetCurrentWeapon(0);
         thrownWeapon = Instantiate(currentThrownWeapon, bulletSpawn.transform.position, transform.rotation);
         thrownWeapon.GetComponent<PickupScript>().ThrowWeapon();
         thrownWeapon.GetComponent<PickupScript>().player = gameObject;

@@ -53,10 +53,7 @@ public class PickupScript : MonoBehaviour
     }
 
     void StopThrow()
-    {
-        float currentSpeed;
-        currentSpeed = throwSpeed;
-        
+    {        
         rotationSpeed = 0;
 
         GetComponent<BoxCollider2D>().isTrigger = true;
