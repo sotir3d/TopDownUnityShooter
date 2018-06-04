@@ -18,12 +18,16 @@ public class PlayerShoot : MonoBehaviour
     public AudioClip rifleSound;
     public AudioClip shotgunSound;
     public WeaponType currentWeapon = WeaponType.Knife;
-    AudioSource weaponSound;
 
     public float shotgunPellets = 10;
 
     public float fireRate = GlobalValues.fireRateMelee;
     public int ammoCount = 0;
+
+    public GameObject muzzleLight;
+
+
+    AudioSource weaponSound;
 
     Animator anim;
     Animator bulletAnim;
@@ -36,6 +40,7 @@ public class PlayerShoot : MonoBehaviour
     float lastFired = 0;
     float spreadRifle = 0;
     float spreadRifleIncrease = 0.3f;
+    float lastMuzzleFlash = 0;
 
     private void Start()
     {
@@ -71,6 +76,9 @@ public class PlayerShoot : MonoBehaviour
                 ThrowWeapon(shotgunPickup);
             }
         }
+
+        if(Time.realtimeSinceStartup - lastMuzzleFlash > 0.05f)
+            muzzleLight.GetComponent<Light>().enabled = false;
     }
 
     void ThrowWeapon(GameObject currentThrownWeapon)
@@ -127,6 +135,10 @@ public class PlayerShoot : MonoBehaviour
 
         if (currentWeapon != WeaponType.Knife)
         {
+            muzzleLight.GetComponent<Light>().enabled = true;
+
+            lastMuzzleFlash = Time.realtimeSinceStartup;
+
             ammoCount--;
             bulletAnim.SetTrigger("Shoot");
 
