@@ -46,13 +46,12 @@ public class PlayerShoot : MonoBehaviour
 
         playerHandler = GetComponentInParent<PlayerHandler>();
         //playerHandler.SetCurrentWeapon(currentWeapon);
-        Debug.Log(playerHandler.currentWeapon);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate) && ammoCount > 0)
+        if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate))
         {
             FireAShot();
         }
@@ -99,7 +98,7 @@ public class PlayerShoot : MonoBehaviour
         {
             meleeHitBox.GetComponent<EnemyTracker>().DestroyEnemies();
         }
-        else if (currentWeapon == WeaponType.Pistol || currentWeapon == WeaponType.Rifle)
+        else if (currentWeapon == WeaponType.Pistol || currentWeapon == WeaponType.Rifle && ammoCount > 0)
         {
             bulletInstance = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
 
@@ -110,7 +109,7 @@ public class PlayerShoot : MonoBehaviour
                 spreadRifle += spreadRifleIncrease;
             }
         }
-        else if (currentWeapon == WeaponType.Shotgun)
+        else if (currentWeapon == WeaponType.Shotgun && ammoCount > 0)
         {
             for (int i = 0; i < shotgunPellets; i++)
             {
