@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 10f;
     public GameObject feet;
+    public AudioClip footstepSound;
 
     Vector2 direction;
     Quaternion playerRotation;
@@ -14,9 +15,14 @@ public class PlayerMovement : MonoBehaviour
     Animator anim;
     Animator feetAnim;
 
+    AudioSource playerAudioSource;
+
     float angle;
     float horizontalInput;
     float verticalInput;
+
+    float lastFootstepSound;
+    float footstepSoundSpeed = 0.6f;
 
     // Use this for initialization
     void Start()
@@ -26,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
         anim = GetComponent<Animator>();
         feetAnim = feet.GetComponent<Animator>();
+
+        playerAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -44,8 +52,14 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetFloat("Speed", 1);
 
-            SetFeetRotation();
+            //SetFeetRotation();
             feetAnim.SetFloat("Speed", 1);
+
+            if((Time.realtimeSinceStartup - lastFootstepSound) > footstepSoundSpeed)
+            {
+                playerAudioSource.PlayOneShot(footstepSound);
+                lastFootstepSound = Time.realtimeSinceStartup;
+            }
         }
         else
         {
@@ -62,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         //Up
-        if(horizontalInput == 0 && verticalInput == 1)
+        if (horizontalInput == 0 && verticalInput == 1)
         {
             feet.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
@@ -83,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
             feet.transform.rotation = Quaternion.Euler(0, 0, -45);
         }
         //Down
-        else if(horizontalInput == 0 && verticalInput == -1)
+        else if (horizontalInput == 0 && verticalInput == -1)
         {
             feet.transform.rotation = Quaternion.Euler(0, 0, -90);
         }
@@ -93,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
             feet.transform.rotation = Quaternion.Euler(0, 0, 225);
         }
         //Left
-        else if(horizontalInput == -1 && verticalInput == 0)
+        else if (horizontalInput == -1 && verticalInput == 0)
         {
             feet.transform.rotation = Quaternion.Euler(0, 0, 180);
         }

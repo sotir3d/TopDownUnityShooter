@@ -20,5 +20,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
         Time.timeScale = 1.0f;
     }
-
+    
+    public void OpenScene(int sceneNumber)
+    {
+        Debug.Log("pressed");
+        SceneManager.LoadScene(sceneNumber);
+    }
 }

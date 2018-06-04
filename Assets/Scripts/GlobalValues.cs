@@ -14,7 +14,7 @@ public class GlobalValues
     public static int ammoCountRifle = 30;
 
     public static float fireRateShotgun = 0.8f;
-    public static int ammoCountShotgun = 15;
+    public static int ammoCountShotgun = 5;
     public static float spreadShotgun = 20;
 
 
