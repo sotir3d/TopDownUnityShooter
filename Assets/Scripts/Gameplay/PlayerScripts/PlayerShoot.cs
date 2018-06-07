@@ -84,10 +84,11 @@ public class PlayerShoot : MonoBehaviour
     void ThrowWeapon(GameObject currentThrownWeapon)
     {
         GameObject thrownWeapon;
-        playerHandler.SetCurrentWeapon(0);
         thrownWeapon = Instantiate(currentThrownWeapon, bulletSpawn.transform.position, transform.rotation);
         thrownWeapon.GetComponent<PickupScript>().ThrowWeapon();
         thrownWeapon.GetComponent<PickupScript>().player = gameObject;
+        thrownWeapon.GetComponent<PickupScript>().ammo = ammoCount;
+        playerHandler.SetCurrentWeapon(WeaponType.Knife, 0);
     }
 
     void FireAShot()
@@ -144,7 +145,7 @@ public class PlayerShoot : MonoBehaviour
 
             if (ammoCount == 0)
             {
-                playerHandler.SetCurrentWeapon(0);
+                playerHandler.SetCurrentWeapon(0,0);
             }
         }
     }

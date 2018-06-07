@@ -12,6 +12,8 @@ public class PickupScript : MonoBehaviour
     public AudioClip pickupSound;
     public AudioClip hitSound;
 
+    public int ammo;
+
     AudioSource pickupAudioSource;
 
 
@@ -35,7 +37,7 @@ public class PickupScript : MonoBehaviour
     {
         if (collision.gameObject == player && !currentlyThrowing)
         {
-            player.GetComponent<PlayerHandler>().SetCurrentWeapon(weaponType);
+            player.GetComponent<PlayerHandler>().SetCurrentWeapon(weaponType, ammo);
             pickupAudioSource.PlayOneShot(pickupSound);
             Destroy(GetComponent<SpriteRenderer>());
             Invoke("DestroyPickup", 1);

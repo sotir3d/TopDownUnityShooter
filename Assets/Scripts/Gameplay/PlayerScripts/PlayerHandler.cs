@@ -37,7 +37,7 @@ public class PlayerHandler : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void SetCurrentWeapon(WeaponType newWeapon)
+    public void SetCurrentWeapon(WeaponType newWeapon, int ammo)
     {
         anim.SetInteger("WeaponSwap", (int)newWeapon);
         animFeet.SetInteger("WeaponSwap", (int)newWeapon);
@@ -51,21 +51,24 @@ public class PlayerHandler : MonoBehaviour
         else if (newWeapon == WeaponType.Pistol)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRatePistol;
-            GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountPistol;
+            //GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountPistol;
             GetComponent<PlayerShoot>().currentWeapon = newWeapon;
         }
         else if (newWeapon == WeaponType.Rifle)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateRifle;
-            GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountRifle;
+            //GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountRifle;
             GetComponent<PlayerShoot>().currentWeapon = newWeapon;
         }
         else if (newWeapon == WeaponType.Shotgun)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateShotgun;
-            GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountShotgun;
+            //GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountShotgun;
             GetComponent<PlayerShoot>().currentWeapon = newWeapon;
         }
+
+
+        GetComponent<PlayerShoot>().ammoCount = ammo;
     }
 
 }

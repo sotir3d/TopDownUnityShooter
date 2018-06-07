@@ -266,6 +266,7 @@ MonoBehaviour:
   throwSound: {fileID: 8300000, guid: ed38edac1f882c34baa9b6dafe5856ec, type: 3}
   pickupSound: {fileID: 8300000, guid: 62a7acca87f52394091aca90f01fa5c9, type: 3}
   hitSound: {fileID: 8300000, guid: ddb18d482a00ff5489ec7e48be35f4c6, type: 3}
+  ammo: 30
 --- !u!212 &212593937833332570
 SpriteRenderer:
   m_ObjectHideFlags: 1
