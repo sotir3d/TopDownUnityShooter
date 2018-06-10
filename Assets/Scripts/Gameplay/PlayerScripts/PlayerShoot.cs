@@ -61,6 +61,11 @@ public class PlayerShoot : MonoBehaviour
             FireAShot();
         }
 
+        if (!Input.GetButton("Fire1"))
+        {
+            spreadRifle = 0;
+        }
+
         if (Input.GetButtonDown("Fire3"))
         {
             if (currentWeapon == WeaponType.Pistol)
