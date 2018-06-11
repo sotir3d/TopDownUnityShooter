@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
 {
     public Canvas victoryCanvas;
     public Canvas uiCanvas;
+    public Canvas pauseCanvas;
+
     public Text ammoCountText;
 
     public GameObject player;
@@ -17,7 +19,7 @@ public class UIManager : MonoBehaviour
     {
         //GetComponentInChildren<Canvas>().enabled = false;
         victoryCanvas.enabled = false;
-
+        pauseCanvas.enabled = false;
         uiCanvas.enabled = true;
     }
 
@@ -35,7 +37,21 @@ public class UIManager : MonoBehaviour
         if (victoryCanvas.enabled == false)
         {
             victoryCanvas.enabled = true;
-            Time.timeScale = 0f;
+            uiCanvas.enabled = false;
+        }
+    }
+
+    public void TogglePauseScreen()
+    {
+        if (pauseCanvas.enabled == false)
+        {
+            pauseCanvas.enabled = true;
+            uiCanvas.enabled = false;
+        }
+        else
+        {
+            pauseCanvas.enabled = false;
+            uiCanvas.enabled = true;
         }
     }
 

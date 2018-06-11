@@ -34,8 +34,7 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        if(Input.GetButton("LookAround"))
+        if (Input.GetButton("LookAround"))
         {
             activeCameraOffset = lookAroundOffset;
         }
@@ -48,7 +47,7 @@ public class CameraScript : MonoBehaviour
 
         cameraPosition.x = Mathf.Lerp(cameraPosition.x, playerTransform.position.x + mouseDistanceFromPlayer.x, Time.deltaTime * cameraMoveSpeed);
         cameraPosition.y = Mathf.Lerp(cameraPosition.y, playerTransform.position.y + mouseDistanceFromPlayer.y, Time.deltaTime * cameraMoveSpeed);
-        
+
         transform.position = cameraPosition;
     }
 }

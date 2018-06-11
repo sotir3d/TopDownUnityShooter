@@ -27,8 +27,14 @@ public class PlayerHandler : MonoBehaviour
     {
         if (gameManager.GetComponent<GameManager>().enemyCount == 0)
         {
-            uiManager.GetComponent<UIManager>().ToggleVictoryScreen();
+            Invoke("ToggleVictoryScreen", 0.5f);   
         }
+    }
+
+    void ToggleVictoryScreen()
+    {
+        //uiManager.GetComponent<UIManager>().ToggleVictoryScreen();
+        gameManager.GetComponent<GameManager>().ToggleVictoryScreen();
     }
 
     public void Death()
@@ -51,19 +57,16 @@ public class PlayerHandler : MonoBehaviour
         else if (newWeapon == WeaponType.Pistol)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRatePistol;
-            //GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountPistol;
             GetComponent<PlayerShoot>().currentWeapon = newWeapon;
         }
         else if (newWeapon == WeaponType.Rifle)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateRifle;
-            //GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountRifle;
             GetComponent<PlayerShoot>().currentWeapon = newWeapon;
         }
         else if (newWeapon == WeaponType.Shotgun)
         {
             GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateShotgun;
-            //GetComponent<PlayerShoot>().ammoCount = GlobalValues.ammoCountShotgun;
             GetComponent<PlayerShoot>().currentWeapon = newWeapon;
         }
 

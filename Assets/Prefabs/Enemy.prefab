@@ -24,9 +24,6 @@ GameObject:
   - component: {fileID: 58654545690286854}
   - component: {fileID: 212294075617119436}
   - component: {fileID: 95070128522280116}
-  - component: {fileID: 114034553485666166}
-  - component: {fileID: 114263353592907824}
-  - component: {fileID: 114862348020864002}
   - component: {fileID: 82588822402825146}
   m_Layer: 9
   m_Name: EnemyCharacter
@@ -491,32 +488,6 @@ MonoBehaviour:
     type: 2}
   explosionSound1: {fileID: 8300000, guid: fab5d372730335546aa5c6971695f887, type: 3}
   explosionSound2: {fileID: 8300000, guid: a287f42bd5fa4eb469c0227679567110, type: 3}
---- !u!114 &114034553485666166
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1090718440780174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 1
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask: -1
 --- !u!114 &114144953365579336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -537,28 +508,6 @@ MonoBehaviour:
   enemySpeedWalk: 2
   enemySpeedRun: 15
   attackSound: {fileID: 8300000, guid: 01d3549e150d20848908fa64c6be121e, type: 3}
---- !u!114 &114263353592907824
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1090718440780174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 847a14d4dc9cc43679ab34fc78e0182f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  speed: 2
-  enableRotation: 1
-  rotationIn2D: 1
-  rotationSpeed: 10
-  interpolatePathSwitches: 1
-  switchPathInterpolationSpeed: 5
-  targetCompatibility: {fileID: 0}
 --- !u!114 &114623942155454718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -572,19 +521,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCharacter: {fileID: 4780934296365072}
   playerCharacter: {fileID: 0}
---- !u!114 &114862348020864002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1090718440780174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 0}
 --- !u!212 &212174631968907204
 SpriteRenderer:
   m_ObjectHideFlags: 1

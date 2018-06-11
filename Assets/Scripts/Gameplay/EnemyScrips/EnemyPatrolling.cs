@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
 public class EnemyPatrolling : MonoBehaviour
 {
@@ -61,10 +60,9 @@ public class EnemyPatrolling : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
-        if ((Time.realtimeSinceStartup - lastTimeSeenPlayer) > maxLastSeenTime && isSeeingPlayer == true)
+        if ((Time.time - lastTimeSeenPlayer) > maxLastSeenTime && isSeeingPlayer == true)
         {
             // when losing sight to player, move back towards the last targeted patrol point
             enemySpeed = enemySpeedWalk;
@@ -150,7 +148,7 @@ public class EnemyPatrolling : MonoBehaviour
 
     public void SeesPlayer()
     {
-        lastTimeSeenPlayer = Time.realtimeSinceStartup;
+        lastTimeSeenPlayer = Time.time;
         isSeeingPlayer = true;
 
         if(!isScreaming)

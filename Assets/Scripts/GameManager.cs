@@ -8,13 +8,33 @@ public class GameManager : MonoBehaviour
 {
     public int enemyCount;
 
-    public UIManager UI;
+    public UIManager uiManager;
 
-    // Use this for initialization
-    void Start()
-    {        
+    bool gamePaused = false;
+
+    private void Update()
+    {
+        if(Input.GetButtonDown("Cancel"))
+        {
+            if(!gamePaused)
+                PauseGame(true);
+            else
+                PauseGame(false);
+        }
     }
-    
+
+    void PauseGame(bool pauseState)
+    {
+        gamePaused = pauseState;
+
+        if (gamePaused)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
+
+        uiManager.GetComponent<UIManager>().TogglePauseScreen();
+    }
+
     public void ToMainMenu()
     {
         SceneManager.LoadScene(0);
@@ -25,5 +45,17 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("pressed");
         SceneManager.LoadScene(sceneNumber);
+    }
+
+    public void ToggleVictoryScreen()
+    {
+        Time.timeScale = 0f;
+        uiManager.GetComponent<UIManager>().ToggleVictoryScreen();
+    }
+
+    public void RestartScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

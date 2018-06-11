@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         playerRigidbody.velocity = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * moveSpeed;
 
@@ -55,10 +55,10 @@ public class PlayerMovement : MonoBehaviour
             //SetFeetRotation();
             feetAnim.SetFloat("Speed", 1);
 
-            if((Time.realtimeSinceStartup - lastFootstepSound) > footstepSoundSpeed)
+            if((Time.time - lastFootstepSound) > footstepSoundSpeed)
             {
                 playerAudioSource.PlayOneShot(footstepSound);
-                lastFootstepSound = Time.realtimeSinceStartup;
+                lastFootstepSound = Time.time;
             }
         }
         else

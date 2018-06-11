@@ -17,6 +17,8 @@ public class PlayerShoot : MonoBehaviour
     public AudioClip pistolSound;
     public AudioClip rifleSound;
     public AudioClip shotgunSound;
+    public AudioClip emptyGunSound;
+
     public WeaponType currentWeapon = WeaponType.Knife;
 
     public float shotgunPellets = 10;
@@ -54,13 +56,14 @@ public class PlayerShoot : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate))
+        if (Input.GetButton("Fire1") && (Time.time - lastFired > fireRate))
         {
             FireAShot();
         }
 
+        //resets the spread for the rifle, when it is no longer fired
         if (!Input.GetButton("Fire1"))
         {
             spreadRifle = 0;
@@ -82,7 +85,7 @@ public class PlayerShoot : MonoBehaviour
             }
         }
 
-        if(Time.realtimeSinceStartup - lastMuzzleFlash > 0.05f)
+        if(Time.time - lastMuzzleFlash > 0.05f)
             muzzleLight.GetComponent<Light>().enabled = false;
     }
 
@@ -100,19 +103,11 @@ public class PlayerShoot : MonoBehaviour
     {
         weaponSound.pitch = Random.Range(0.8f, 1.3f);
 
-        if (currentWeapon == WeaponType.Pistol)
-            weaponSound.PlayOneShot(pistolSound);
-        else if (currentWeapon == WeaponType.Rifle)
-            weaponSound.PlayOneShot(rifleSound);
-        else if (currentWeapon == WeaponType.Shotgun)
-            weaponSound.PlayOneShot(shotgunSound);
-
-
         if (currentWeapon == WeaponType.Knife)
         {
             meleeHitBox.GetComponent<EnemyTracker>().DestroyEnemies();
         }
-        else if (currentWeapon == WeaponType.Pistol || currentWeapon == WeaponType.Rifle && ammoCount > 0)
+        else if ((currentWeapon == WeaponType.Pistol || currentWeapon == WeaponType.Rifle) && ammoCount > 0)
         {
             bulletInstance = Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
 
@@ -137,20 +132,31 @@ public class PlayerShoot : MonoBehaviour
 
         anim.SetTrigger("Shoot");
 
-        lastFired = Time.realtimeSinceStartup;
+        lastFired = Time.time;
 
         if (currentWeapon != WeaponType.Knife)
         {
-            muzzleLight.GetComponent<Light>().enabled = true;
-
-            lastMuzzleFlash = Time.realtimeSinceStartup;
-
-            ammoCount--;
-            bulletAnim.SetTrigger("Shoot");
-
-            if (ammoCount == 0)
+            if (ammoCount <= 0)
             {
-                playerHandler.SetCurrentWeapon(0,0);
+                //playerHandler.SetCurrentWeapon(0,0);
+                weaponSound.PlayOneShot(emptyGunSound);
+            }
+
+            else if (ammoCount > 0)
+            {
+                muzzleLight.GetComponent<Light>().enabled = true;
+
+                lastMuzzleFlash = Time.time;
+
+                ammoCount--;
+                bulletAnim.SetTrigger("Shoot");
+
+                if (currentWeapon == WeaponType.Pistol)
+                    weaponSound.PlayOneShot(pistolSound);
+                else if (currentWeapon == WeaponType.Rifle)
+                    weaponSound.PlayOneShot(rifleSound);
+                else if (currentWeapon == WeaponType.Shotgun)
+                    weaponSound.PlayOneShot(shotgunSound);
             }
         }
     }
