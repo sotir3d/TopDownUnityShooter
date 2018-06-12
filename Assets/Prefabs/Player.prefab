@@ -640,6 +640,15 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   uiManager: {fileID: 0}
   feet: {fileID: 1249076885869272}
+  bloodSpatter: {fileID: 1064072916470510, guid: 80a0e42e46e365749ad41d1fd4a77942,
+    type: 2}
+  bloodDecal: {fileID: 1502951447735022, guid: 34fc42768df774643b6fd9bb08b3a693, type: 2}
+  audioSource: {fileID: 0}
+  bloodSpatterSound:
+  - {fileID: 8300000, guid: fab5d372730335546aa5c6971695f887, type: 3}
+  - {fileID: 8300000, guid: a287f42bd5fa4eb469c0227679567110, type: 3}
+  - {fileID: 8300000, guid: a454bbf8f4cef454d92572278ed70547, type: 3}
+  - {fileID: 8300000, guid: 3841fda5e024e214498b228022b7ca00, type: 3}
 --- !u!114 &114129374016703728
 MonoBehaviour:
   m_ObjectHideFlags: 1

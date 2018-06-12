@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4540932088666896}
   - component: {fileID: 198891006342391684}
   - component: {fileID: 199384896427960602}
-  - component: {fileID: 114736853438671788}
   m_Layer: 14
   m_Name: BloodParticle
   m_TagString: Untagged
@@ -42,17 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -86.3}
---- !u!114 &114736853438671788
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1064072916470510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab22fcd4d136da48aaea8259ad09791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &198891006342391684
 ParticleSystem:
   m_ObjectHideFlags: 1

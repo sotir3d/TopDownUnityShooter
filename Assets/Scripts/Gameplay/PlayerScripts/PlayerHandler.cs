@@ -12,14 +12,23 @@ public class PlayerHandler : MonoBehaviour
     public GameObject uiManager;
     public GameObject feet;
 
+    public GameObject bloodSpatter;
+    public GameObject bloodDecal;
+
+    public AudioSource audioSource;
+    public AudioClip[] bloodSpatterSound;
+
     Animator anim;
     Animator animFeet;
+
+    bool deathTriggered = false;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         animFeet = feet.GetComponent<Animator>();
 
+        audioSource = GetComponent<AudioSource>();
         currentWeapon = WeaponType.Pistol;
     }
 
@@ -39,8 +48,25 @@ public class PlayerHandler : MonoBehaviour
 
     public void Death()
     {
+        if (!deathTriggered)
+        {
+            Instantiate(bloodSpatter, transform.position, transform.rotation);
+            Instantiate(bloodDecal, transform.position, transform.rotation);
+
+            Destroy(GetComponent<SpriteRenderer>());
+            Destroy(feet);
+
+            audioSource.PlayOneShot(bloodSpatterSound[Random.Range(0, bloodSpatterSound.Length)]);
+
+            Invoke("ToggleFailedScreen", 0.5f);
+        }
+    }
+
+    void ToggleFailedScreen()
+    {
         Destroy(gameObject);
-        SceneManager.LoadScene(0);
+
+        gameManager.GetComponent<GameManager>().ToggleFailedScreen();
     }
 
     public void SetCurrentWeapon(WeaponType newWeapon, int ammo)

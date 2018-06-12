@@ -59,7 +59,6 @@ public class EnemyTracker : MonoBehaviour
     {
         for (int i = 0; i < iterateEnemies.Count; i++)
         {
-            Debug.Log("DestroyEnemies");
             enemies[i].GetComponentInParent<EnemyHandler>().Death();
         }
     }

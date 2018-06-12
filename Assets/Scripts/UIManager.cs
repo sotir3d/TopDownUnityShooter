@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public Canvas victoryCanvas;
     public Canvas uiCanvas;
     public Canvas pauseCanvas;
+    public Canvas failedCanvas;
 
     public Text ammoCountText;
 
@@ -20,6 +21,7 @@ public class UIManager : MonoBehaviour
         //GetComponentInChildren<Canvas>().enabled = false;
         victoryCanvas.enabled = false;
         pauseCanvas.enabled = false;
+        failedCanvas.enabled = false;
         uiCanvas.enabled = true;
     }
 
@@ -34,6 +36,12 @@ public class UIManager : MonoBehaviour
     public void ToggleVictoryScreen()
     {
         victoryCanvas.enabled = true;
+        uiCanvas.enabled = false;
+    }
+
+    public void ToggleFailedScreen()
+    {
+        failedCanvas.enabled = true;
         uiCanvas.enabled = false;
     }
 

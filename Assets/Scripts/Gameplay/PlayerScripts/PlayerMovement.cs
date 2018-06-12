@@ -55,11 +55,11 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(playerRigidbody.velocity.x) > 0 || Mathf.Abs(playerRigidbody.velocity.y) > 0)
         {
             anim.SetFloat("Speed", 1);
+            
+            if (feetAnim != null)
+                feetAnim.SetFloat("Speed", 1);
 
-            //SetFeetRotation();
-            feetAnim.SetFloat("Speed", 1);
-
-            if((Time.time - lastFootstepSound) > footstepSoundSpeed)
+            if ((Time.time - lastFootstepSound) > footstepSoundSpeed)
             {
                 playerAudioSource.PlayOneShot(footstepSound);
                 lastFootstepSound = Time.time;
@@ -69,56 +69,10 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRigidbody.velocity = new Vector3(0, 0, 0);
             anim.SetFloat("Speed", 0);
-            feetAnim.SetFloat("Speed", 0);
+
+            if (feetAnim != null)
+                feetAnim.SetFloat("Speed", 0);
         }
 
-    }
-
-    void SetFeetRotation()
-    {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-
-        //Up
-        if (horizontalInput == 0 && verticalInput == 1)
-        {
-            feet.transform.rotation = Quaternion.Euler(0, 0, 90);
-        }
-        // Up-Right
-        else if (horizontalInput == 1 && verticalInput == 1)
-        {
-            Debug.Log(verticalInput);
-            feet.transform.rotation = Quaternion.Euler(0, 0, 45);
-        }
-        //Right
-        else if (horizontalInput == 1 && verticalInput == 0)
-        {
-            feet.transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        //Down-Right
-        else if (horizontalInput == 1 && verticalInput == -1)
-        {
-            feet.transform.rotation = Quaternion.Euler(0, 0, -45);
-        }
-        //Down
-        else if (horizontalInput == 0 && verticalInput == -1)
-        {
-            feet.transform.rotation = Quaternion.Euler(0, 0, -90);
-        }
-        //Down-Left
-        else if (horizontalInput == -1 && verticalInput == -1)
-        {
-            feet.transform.rotation = Quaternion.Euler(0, 0, 225);
-        }
-        //Left
-        else if (horizontalInput == -1 && verticalInput == 0)
-        {
-            feet.transform.rotation = Quaternion.Euler(0, 0, 180);
-        }
-        //Up-Left
-        else if (horizontalInput == -1 && verticalInput == 1)
-        {
-            feet.transform.rotation = Quaternion.Euler(0, 0, 135);
-        }
     }
 }

@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
     
     public void OpenScene(int sceneNumber)
     {
-        Debug.Log("pressed");
         SceneManager.LoadScene(sceneNumber);
     }
 
@@ -66,6 +65,13 @@ public class GameManager : MonoBehaviour
     {
         uiManager.GetComponent<UIManager>().ToggleVictoryScreen();
         levelComplete = true;
+        Time.timeScale = 0f;
+    }
+
+    public void ToggleFailedScreen()
+    {
+        uiManager.GetComponent<UIManager>().ToggleFailedScreen();
+        
         Time.timeScale = 0f;
     }
 

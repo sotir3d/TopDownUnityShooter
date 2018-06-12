@@ -488,8 +488,12 @@ MonoBehaviour:
   enemyCharacter: {fileID: 1090718440780174}
   bloodSpatter: {fileID: 1064072916470510, guid: 80a0e42e46e365749ad41d1fd4a77942,
     type: 2}
-  explosionSound1: {fileID: 8300000, guid: fab5d372730335546aa5c6971695f887, type: 3}
-  explosionSound2: {fileID: 8300000, guid: a287f42bd5fa4eb469c0227679567110, type: 3}
+  bloodDecal: {fileID: 1502951447735022, guid: 34fc42768df774643b6fd9bb08b3a693, type: 2}
+  bloodSpatterSound:
+  - {fileID: 8300000, guid: fab5d372730335546aa5c6971695f887, type: 3}
+  - {fileID: 8300000, guid: a287f42bd5fa4eb469c0227679567110, type: 3}
+  - {fileID: 8300000, guid: a454bbf8f4cef454d92572278ed70547, type: 3}
+  - {fileID: 8300000, guid: 3841fda5e024e214498b228022b7ca00, type: 3}
 --- !u!114 &114144953365579336
 MonoBehaviour:
   m_ObjectHideFlags: 1

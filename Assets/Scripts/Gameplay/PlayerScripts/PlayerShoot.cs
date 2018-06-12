@@ -96,7 +96,6 @@ public class PlayerShoot : MonoBehaviour
 
     void ThrowWeapon(GameObject currentThrownWeapon)
     {
-        Debug.Log("throw");
         GameObject thrownWeapon;
         thrownWeapon = Instantiate(currentThrownWeapon, bulletSpawn.transform.position, transform.rotation);
         thrownWeapon.GetComponent<PickupScript>().ThrowWeapon();

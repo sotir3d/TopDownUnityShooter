@@ -7,9 +7,9 @@ public class EnemyHandler : MonoBehaviour
     public GameObject gameManager;
     public GameObject enemyCharacter;
     public GameObject bloodSpatter;
+    public GameObject bloodDecal;
 
-    public AudioClip explosionSound1;
-    public AudioClip explosionSound2;
+    public AudioClip[] bloodSpatterSound;
 
     AudioSource enemyAudioSource;
 
@@ -28,19 +28,14 @@ public class EnemyHandler : MonoBehaviour
         if(!deathTriggered)
         {
             deathTriggered = true;
-            Transform spatterTransform = enemyCharacter.transform;
-            spatterTransform.Rotate(0, 0, 180);
-            Instantiate(bloodSpatter, enemyCharacter.transform.position, spatterTransform.rotation);
+            
+            Instantiate(bloodSpatter, enemyCharacter.transform.position, enemyCharacter.transform.rotation);
+            Instantiate(bloodDecal, enemyCharacter.transform.position, enemyCharacter.transform.rotation);
+
             gameManager.GetComponent<GameManager>().enemyCount--;
             Destroy(enemyCharacter);
-            if(randNum == 1)
-            {
-                enemyAudioSource.PlayOneShot(explosionSound1);
-            }
-            else
-            {
-                enemyAudioSource.PlayOneShot(explosionSound2);
-            }
+            
+            enemyAudioSource.PlayOneShot(bloodSpatterSound[Random.Range(0,bloodSpatterSound.Length)]);
             Invoke("DestroyObject", 0.5f);
         }
     }
