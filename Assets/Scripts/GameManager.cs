@@ -49,8 +49,8 @@ public class GameManager : MonoBehaviour
 
     public void ToggleVictoryScreen()
     {
-        Time.timeScale = 0f;
         uiManager.GetComponent<UIManager>().ToggleVictoryScreen();
+        Time.timeScale = 0f;
     }
 
     public void RestartScene()

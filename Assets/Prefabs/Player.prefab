@@ -665,6 +665,7 @@ MonoBehaviour:
   rifleSound: {fileID: 8300000, guid: 7fc937a4ac422b848af1b99844100e99, type: 3}
   shotgunSound: {fileID: 8300000, guid: f662860abbbd441498e8d322a384e58c, type: 3}
   emptyGunSound: {fileID: 8300000, guid: 3b6854caf29080746b7192b7565ed1e0, type: 3}
+  knifeSwingSound: {fileID: 8300000, guid: 65ce62c9247a135458395431e5f4b6d2, type: 3}
   currentWeapon: 0
   shotgunPellets: 10
   fireRate: 0.3

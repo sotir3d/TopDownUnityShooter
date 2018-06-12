@@ -18,6 +18,7 @@ public class PlayerShoot : MonoBehaviour
     public AudioClip rifleSound;
     public AudioClip shotgunSound;
     public AudioClip emptyGunSound;
+    public AudioClip knifeSwingSound;
 
     public WeaponType currentWeapon = WeaponType.Knife;
 
@@ -158,6 +159,10 @@ public class PlayerShoot : MonoBehaviour
                 else if (currentWeapon == WeaponType.Shotgun)
                     weaponSound.PlayOneShot(shotgunSound);
             }
+        }
+        else if (currentWeapon == WeaponType.Knife)
+        {
+            weaponSound.PlayOneShot(knifeSwingSound);
         }
     }
 }
