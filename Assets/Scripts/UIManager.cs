@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if(player != null)
+        if (player != null)
         {
             ammoCountText.text = "Ammo: " + player.GetComponent<PlayerShoot>().ammoCount;
         }
@@ -33,17 +33,13 @@ public class UIManager : MonoBehaviour
 
     public void ToggleVictoryScreen()
     {
-        // not the optimal way but for the sake of readability
-        if (victoryCanvas.enabled == false)
-        {
-            victoryCanvas.enabled = true;
-            uiCanvas.enabled = false;
-        }
+        victoryCanvas.enabled = true;
+        uiCanvas.enabled = false;
     }
 
-    public void TogglePauseScreen()
+    public void SetPauseScreen(bool ispaused)
     {
-        if (pauseCanvas.enabled == false)
+        if (ispaused == true)
         {
             pauseCanvas.enabled = true;
             uiCanvas.enabled = false;

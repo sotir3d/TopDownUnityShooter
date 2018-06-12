@@ -57,9 +57,13 @@ public class PlayerShoot : MonoBehaviour
     }
     
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate))
+        //ignores input when game is paused
+        if (Time.timeScale == 0)
+            return;
+        
+        if (Input.GetButton("Fire1") && (Time.time - lastFired > fireRate))
         {
             FireAShot();
         }
@@ -86,12 +90,13 @@ public class PlayerShoot : MonoBehaviour
             }
         }
 
-        if(Time.realtimeSinceStartup - lastMuzzleFlash > 0.05f)
+        if(Time.time - lastMuzzleFlash > 0.05f)
             muzzleLight.GetComponent<Light>().enabled = false;
     }
 
     void ThrowWeapon(GameObject currentThrownWeapon)
     {
+        Debug.Log("throw");
         GameObject thrownWeapon;
         thrownWeapon = Instantiate(currentThrownWeapon, bulletSpawn.transform.position, transform.rotation);
         thrownWeapon.GetComponent<PickupScript>().ThrowWeapon();
@@ -133,7 +138,7 @@ public class PlayerShoot : MonoBehaviour
 
         anim.SetTrigger("Shoot");
 
-        lastFired = Time.realtimeSinceStartup;
+        lastFired = Time.time;
 
         if (currentWeapon != WeaponType.Knife)
         {
@@ -147,7 +152,7 @@ public class PlayerShoot : MonoBehaviour
             {
                 muzzleLight.GetComponent<Light>().enabled = true;
 
-                lastMuzzleFlash = Time.realtimeSinceStartup;
+                lastMuzzleFlash = Time.time;
 
                 ammoCount--;
                 bulletAnim.SetTrigger("Shoot");

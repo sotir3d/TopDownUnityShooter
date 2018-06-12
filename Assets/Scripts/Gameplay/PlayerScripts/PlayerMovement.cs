@@ -37,8 +37,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
+        //ignores input when game is paused
+        if (Time.timeScale == 0)
+            return;
+
         playerRigidbody.velocity = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * moveSpeed;
 
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;

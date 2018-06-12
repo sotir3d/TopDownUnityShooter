@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
 
     bool gamePaused = false;
+    bool levelComplete = false;
 
     private void Update()
     {
@@ -26,13 +27,27 @@ public class GameManager : MonoBehaviour
     void PauseGame(bool pauseState)
     {
         gamePaused = pauseState;
+        if(!levelComplete)
+        {
+            if (gamePaused)
+            {
+                Time.timeScale = 0;
+                uiManager.GetComponent<UIManager>().SetPauseScreen(true);
+            }
+            else
+            {
+                Time.timeScale = 1;
+                uiManager.GetComponent<UIManager>().SetPauseScreen(false);
+            }
 
-        if (gamePaused)
-            Time.timeScale = 0;
-        else
-            Time.timeScale = 1;
+        }
+    }
 
-        uiManager.GetComponent<UIManager>().TogglePauseScreen();
+    public void ContinueGame()
+    {
+        Time.timeScale = 1;
+        gamePaused = false;
+        uiManager.GetComponent<UIManager>().SetPauseScreen(false);
     }
 
     public void ToMainMenu()
@@ -50,6 +65,7 @@ public class GameManager : MonoBehaviour
     public void ToggleVictoryScreen()
     {
         uiManager.GetComponent<UIManager>().ToggleVictoryScreen();
+        levelComplete = true;
         Time.timeScale = 0f;
     }
 

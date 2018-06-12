@@ -14,11 +14,13 @@ public class PickupScript : MonoBehaviour
 
     public int ammo;
 
+    public float rotationSpeed = 45;
+
     AudioSource pickupAudioSource;
 
 
     float throwSpeed = 20;
-    float rotationSpeed = 0;
+    float currentRotationSpeed = 0;
     bool currentlyThrowing = false;
 
     // Use this for initialization
@@ -30,7 +32,7 @@ public class PickupScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.Rotate(0, 0, rotationSpeed);
+        transform.Rotate(0, 0, currentRotationSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -63,7 +65,7 @@ public class PickupScript : MonoBehaviour
     {
         pickupAudioSource = GetComponent<AudioSource>();
         GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(throwSpeed, 0));
-        rotationSpeed = 20;
+        currentRotationSpeed = rotationSpeed;
         currentlyThrowing = true;
         GetComponent<BoxCollider2D>().isTrigger = false;
         pickupAudioSource.PlayOneShot(throwSound);
@@ -72,7 +74,7 @@ public class PickupScript : MonoBehaviour
 
     void StopThrow()
     {        
-        rotationSpeed = 0;
+        currentRotationSpeed = 0;
 
         GetComponent<BoxCollider2D>().isTrigger = true;
         GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(new Vector2(0, 0));
