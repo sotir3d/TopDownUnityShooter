@@ -283,6 +283,7 @@ Prefab:
       value: 
       objectReference: {fileID: 196602611}
 <<<<<<< HEAD
+<<<<<<< HEAD
     - target: {fileID: 114336382882253766, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
         type: 2}
       propertyPath: m_Sprite
@@ -290,6 +291,8 @@ Prefab:
       objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 114336382882253766, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
 =======
+=======
+>>>>>>> origin/master
     - target: {fileID: 114163388332442584, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
         type: 2}
       propertyPath: player
@@ -311,7 +314,10 @@ Prefab:
       value: 
       objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 114620042964232848, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
+<<<<<<< HEAD
 >>>>>>> f89b0e3e41bb29edf343a906add99d35da9feec0
+=======
+>>>>>>> origin/master
         type: 2}
       propertyPath: m_Type
       value: 1
