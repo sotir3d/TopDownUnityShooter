@@ -619,7 +619,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 0.05
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -26529,6 +26529,11 @@ Prefab:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 186073706}
+    - target: {fileID: 108342754070141120, guid: 324951ed0eca38445836b49253d082d0,
+        type: 2}
+      propertyPath: m_Range
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 324951ed0eca38445836b49253d082d0, type: 2}
   m_IsPrefabParent: 0
