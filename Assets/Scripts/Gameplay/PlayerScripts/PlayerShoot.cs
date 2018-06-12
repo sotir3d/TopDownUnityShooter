@@ -54,11 +54,11 @@ public class PlayerShoot : MonoBehaviour
         playerHandler = GetComponentInParent<PlayerHandler>();
         //playerHandler.SetCurrentWeapon(currentWeapon);
     }
-
+    
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetButton("Fire1") && (Time.time - lastFired > fireRate))
+        if (Input.GetButton("Fire1") && (Time.realtimeSinceStartup - lastFired > fireRate))
         {
             FireAShot();
         }
@@ -85,7 +85,7 @@ public class PlayerShoot : MonoBehaviour
             }
         }
 
-        if(Time.time - lastMuzzleFlash > 0.05f)
+        if(Time.realtimeSinceStartup - lastMuzzleFlash > 0.05f)
             muzzleLight.GetComponent<Light>().enabled = false;
     }
 
@@ -132,7 +132,7 @@ public class PlayerShoot : MonoBehaviour
 
         anim.SetTrigger("Shoot");
 
-        lastFired = Time.time;
+        lastFired = Time.realtimeSinceStartup;
 
         if (currentWeapon != WeaponType.Knife)
         {
@@ -146,7 +146,7 @@ public class PlayerShoot : MonoBehaviour
             {
                 muzzleLight.GetComponent<Light>().enabled = true;
 
-                lastMuzzleFlash = Time.time;
+                lastMuzzleFlash = Time.realtimeSinceStartup;
 
                 ammoCount--;
                 bulletAnim.SetTrigger("Shoot");
