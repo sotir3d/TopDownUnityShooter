@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 114620042964232848}
   - component: {fileID: 114286928264321306}
   m_Layer: 5
-  m_Name: ContinueButton
+  m_Name: ResumeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1060,7 +1060,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Continue
+  m_Text: 'Resume
 
 '
 --- !u!114 &114549855203372080
