@@ -14,6 +14,7 @@ public class SettingsMenuScript : MonoBehaviour
 
     public GameObject startPanel;
     public GameObject settingsPanel;
+    public GameObject controlsPanel;
 
     Resolution[] resolutions;
 
@@ -23,31 +24,10 @@ public class SettingsMenuScript : MonoBehaviour
     {
         startPanel.SetActive(true);
         settingsPanel.SetActive(false);
+        controlsPanel.SetActive(false);
 
         graphicsDropdown.value = QualitySettings.GetQualityLevel();
         fullscreenToggle.isOn = Screen.fullScreen;
-
-        //resolutions = Screen.resolutions;
-
-        //resolutionsDropdown.ClearOptions();
-
-        //List<string> options = new List<string>();
-
-        //int currentResolutionIndex = 0;
-
-        //for (int i = 0; i < resolutions.Length; i++)
-        //{
-        //    options.Add(resolutions[i].width + "x" + resolutions[i].height);
-
-        //    if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
-        //    {
-        //        currentResolutionIndex = i;
-        //    }
-        //}
-
-        //resolutionsDropdown.AddOptions(options);
-        //resolutionsDropdown.value = currentResolutionIndex;
-        //resolutionsDropdown.RefreshShownValue();
 
         resolutions = Screen.resolutions;
 
@@ -103,12 +83,19 @@ public class SettingsMenuScript : MonoBehaviour
     {
         startPanel.SetActive(true);
         settingsPanel.SetActive(false);
+        controlsPanel.SetActive(false);
     }
 
     public void ToSettingsScreen()
     {
         startPanel.SetActive(false);
         settingsPanel.SetActive(true);
+    }
+
+    public void ToControlsScreen()
+    {
+        startPanel.SetActive(false);
+        controlsPanel.SetActive(true);
     }
 
     public void QuitGame()
