@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonScript : MonoBehaviour, IPointerEnterHandler
+public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    Vector3 newScale;
+
+    AudioSource audioSource;
+    public AudioClip hoverSound;
 
     // Use this for initialization
     void Start()
     {
-        Debug.Log("start");
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        transform.localScale = newScale;
     }
 
     private void OnMouseDown()
@@ -25,11 +29,11 @@ public class ButtonScript : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("asasfsfd");
+        audioSource.PlayOneShot(hoverSound);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("asasfsfd");
+        
     }
 }
