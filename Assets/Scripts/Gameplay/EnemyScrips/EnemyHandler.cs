@@ -23,7 +23,6 @@ public class EnemyHandler : MonoBehaviour
 
     public void Death()
     {
-        int randNum = Random.Range(1, 3);
         //prevents triggering through multiple shotgun hits on the same frame
         if(!deathTriggered)
         {

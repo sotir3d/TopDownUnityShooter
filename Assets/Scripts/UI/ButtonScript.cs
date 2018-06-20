@@ -5,8 +5,6 @@ using UnityEngine.EventSystems;
 
 public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    Vector3 newScale;
-
     AudioSource audioSource;
     public AudioClip hoverSound;
 
@@ -16,11 +14,6 @@ public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.localScale = newScale;
-    }
 
     private void OnMouseDown()
     {
@@ -34,6 +27,6 @@ public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        
+
     }
 }

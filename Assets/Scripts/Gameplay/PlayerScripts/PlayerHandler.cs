@@ -73,31 +73,32 @@ public class PlayerHandler : MonoBehaviour
     {
         anim.SetInteger("WeaponSwap", (int)newWeapon);
         animFeet.SetInteger("WeaponSwap", (int)newWeapon);
+
         
         if (newWeapon == WeaponType.Knife)
         {
-            GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateMelee;
-            GetComponent<PlayerShoot>().ammoCount = 0;
-            GetComponent<PlayerShoot>().currentWeapon = newWeapon;
+            GetComponent<PlayerWeapon>().fireRate = GlobalValues.fireRateMelee;
+            GetComponent<PlayerWeapon>().ammoCount = 0;
+            GetComponent<PlayerWeapon>().currentWeapon = newWeapon;
         }
         else if (newWeapon == WeaponType.Pistol)
         {
-            GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRatePistol;
-            GetComponent<PlayerShoot>().currentWeapon = newWeapon;
+            GetComponent<PlayerWeapon>().fireRate = GlobalValues.fireRatePistol;
+            GetComponent<PlayerWeapon>().currentWeapon = newWeapon;
         }
         else if (newWeapon == WeaponType.Rifle)
         {
-            GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateRifle;
-            GetComponent<PlayerShoot>().currentWeapon = newWeapon;
+            GetComponent<PlayerWeapon>().fireRate = GlobalValues.fireRateRifle;
+            GetComponent<PlayerWeapon>().currentWeapon = newWeapon;
         }
         else if (newWeapon == WeaponType.Shotgun)
         {
-            GetComponent<PlayerShoot>().fireRate = GlobalValues.fireRateShotgun;
-            GetComponent<PlayerShoot>().currentWeapon = newWeapon;
+            GetComponent<PlayerWeapon>().fireRate = GlobalValues.fireRateShotgun;
+            GetComponent<PlayerWeapon>().currentWeapon = newWeapon;
         }
 
 
-        GetComponent<PlayerShoot>().ammoCount = ammo;
+        GetComponent<PlayerWeapon>().ammoCount = ammo;
     }
 
 }

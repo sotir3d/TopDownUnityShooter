@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
     {
         if (player != null)
         {
-            ammoCountText.text = "Ammo: " + player.GetComponent<PlayerShoot>().ammoCount;
+            ammoCountText.text = "Ammo: " + player.GetComponent<PlayerWeapon>().ammoCount;
         }
     }
 

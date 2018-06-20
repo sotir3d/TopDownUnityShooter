@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShoot : MonoBehaviour
+public class PlayerWeapon : MonoBehaviour
 {
     public GameObject bulletSpawn;
     public GameObject bullet;
@@ -12,7 +12,6 @@ public class PlayerShoot : MonoBehaviour
     public GameObject pistolPickup;
     public GameObject riflePickup;
     public GameObject shotgunPickup;
-
 
     public AudioClip pistolSound;
     public AudioClip rifleSound;
@@ -76,32 +75,56 @@ public class PlayerShoot : MonoBehaviour
 
         if (Input.GetButtonDown("Fire3"))
         {
-            if (currentWeapon == WeaponType.Pistol)
-            {
-                ThrowWeapon(pistolPickup);
-            }
-            else if (currentWeapon == WeaponType.Rifle)
-            {
-                ThrowWeapon(riflePickup);
-            }
-            else if (currentWeapon == WeaponType.Shotgun)
-            {
-                ThrowWeapon(shotgunPickup);
-            }
+            ThrowWeapon(currentWeapon);
         }
 
         if(Time.time - lastMuzzleFlash > 0.05f)
             muzzleLight.GetComponent<Light>().enabled = false;
     }
 
-    void ThrowWeapon(GameObject currentThrownWeapon)
+    void ThrowWeapon(WeaponType currentThrownWeapon)
     {
         GameObject thrownWeapon;
-        thrownWeapon = Instantiate(currentThrownWeapon, bulletSpawn.transform.position, transform.rotation);
-        thrownWeapon.GetComponent<PickupScript>().ThrowWeapon();
-        thrownWeapon.GetComponent<PickupScript>().player = gameObject;
-        thrownWeapon.GetComponent<PickupScript>().ammo = ammoCount;
-        playerHandler.SetCurrentWeapon(WeaponType.Knife, 0);
+
+        if(GetPickupFromWeapontype(currentThrownWeapon) != null)
+        {
+            thrownWeapon = Instantiate(GetPickupFromWeapontype(currentThrownWeapon), bulletSpawn.transform.position, transform.rotation);
+            thrownWeapon.GetComponent<PickupScript>().ThrowWeapon();
+            thrownWeapon.GetComponent<PickupScript>().player = gameObject;
+            thrownWeapon.GetComponent<PickupScript>().ammo = ammoCount;
+            playerHandler.SetCurrentWeapon(WeaponType.Knife, 0);
+        }
+    }
+
+    public void DropCurrentWeapon()
+    {
+        GameObject droppedWeapon;
+        if (GetPickupFromWeapontype(currentWeapon) != null)
+        {
+            droppedWeapon = Instantiate(GetPickupFromWeapontype(currentWeapon), transform.position, transform.rotation);
+            droppedWeapon.GetComponent<PickupScript>().player = gameObject;
+            droppedWeapon.GetComponent<PickupScript>().ammo = ammoCount;
+        }
+    }
+
+    GameObject GetPickupFromWeapontype(WeaponType weaponType)
+    {
+        if (weaponType == WeaponType.Pistol)
+        {
+            return pistolPickup;
+        }
+        else if (weaponType == WeaponType.Rifle)
+        {
+            return riflePickup;
+        }
+        else if (weaponType == WeaponType.Shotgun)
+        {
+            return shotgunPickup;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     void FireAShot()
