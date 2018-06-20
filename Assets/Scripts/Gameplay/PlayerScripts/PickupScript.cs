@@ -30,7 +30,6 @@ public class PickupScript : MonoBehaviour
     {
         pickupAudioSource = GetComponent<AudioSource>();
         pickupSpawnedTime = Time.time;
-        currentlyThrowing = false;
     }
 
     // Update is called once per frame
@@ -46,7 +45,7 @@ public class PickupScript : MonoBehaviour
         if ((Time.time - pickupSpawnedTime) < pickupDelay)
             return;
         
-        if (Input.GetButton("Fire2") && collision.gameObject.tag == "Player" && !currentlyThrowing)
+        if (Input.GetButton("Fire2") && collision.gameObject.tag == "Player")
         {
             
             player.GetComponent<PlayerWeapon>().DropCurrentWeapon();

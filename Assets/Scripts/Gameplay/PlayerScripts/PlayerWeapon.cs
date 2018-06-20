@@ -52,7 +52,7 @@ public class PlayerWeapon : MonoBehaviour
         bulletAnim = bulletSpawn.GetComponent<Animator>();
 
         playerHandler = GetComponentInParent<PlayerHandler>();
-        //playerHandler.SetCurrentWeapon(currentWeapon);
+        //playerHandler.SetCurrentWeapon(currentWeapon, 30);
     }
     
     // Update is called once per frame
@@ -156,7 +156,6 @@ public class PlayerWeapon : MonoBehaviour
         }
 
 
-        bulletNoiseRadius.GetComponent<EnemyTracker>().NotifyEnemies();
 
         anim.SetTrigger("Shoot");
 
@@ -185,6 +184,8 @@ public class PlayerWeapon : MonoBehaviour
                     weaponSound.PlayOneShot(rifleSound);
                 else if (currentWeapon == WeaponType.Shotgun)
                     weaponSound.PlayOneShot(shotgunSound);
+
+                bulletNoiseRadius.GetComponent<EnemyTracker>().NotifyEnemies();
             }
         }
         else if (currentWeapon == WeaponType.Knife)

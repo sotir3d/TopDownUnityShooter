@@ -62,6 +62,9 @@ public class EnemyPatrolling : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (playerTransform == null)
+            return;
+
         if ((Time.time - lastTimeSeenPlayer) > maxLastSeenTime && isSeeingPlayer == true)
         {
             // when losing sight to player, move back towards the last targeted patrol point
@@ -137,12 +140,15 @@ public class EnemyPatrolling : MonoBehaviour
         layerMask += 1 << 11;
         layerMask = ~layerMask;
 
-        //racast from the enemy towards the player
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, playerTransform.position - transform.position, Mathf.Infinity, layerMask);
-
-        if (hit.collider.gameObject.tag == "Player")
+        if(playerTransform != null)
         {
-            SeesPlayer();
+            //racast from the enemy towards the player
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, playerTransform.position - transform.position, Mathf.Infinity, layerMask);
+
+            if (hit.collider.gameObject.tag == "Player")
+            {
+                SeesPlayer();
+            }
         }
     }
 
