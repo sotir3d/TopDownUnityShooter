@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using System.Linq;
 
 public class SettingsMenuScript : MonoBehaviour
 {
@@ -28,10 +29,8 @@ public class SettingsMenuScript : MonoBehaviour
         controlsPanel.SetActive(false);
         levelsPanel.SetActive(false);
 
-        graphicsDropdown.value = QualitySettings.GetQualityLevel();
-        fullscreenToggle.isOn = Screen.fullScreen;
-
         resolutions = Screen.resolutions;
+        
 
         for (int i = 0; i < resolutions.Length; i++)
         {
@@ -42,10 +41,16 @@ public class SettingsMenuScript : MonoBehaviour
             resolutionsDropdown.onValueChanged.AddListener(delegate { Screen.SetResolution(resolutions[resolutionsDropdown.value].width, resolutions[resolutionsDropdown.value].height, fullScreenMode); });
 
         }
-        
+
+
+        graphicsDropdown.value = QualitySettings.GetQualityLevel();
+
+        fullscreenToggle.isOn = Screen.fullScreen;
+
         ToggleFullscreen(Screen.fullScreen);
 
     }
+    
 
     string ResToString(Resolution res)
     {
@@ -70,7 +75,7 @@ public class SettingsMenuScript : MonoBehaviour
         else
             fullScreenMode = FullScreenMode.Windowed;
 
-        //Screen.SetResolution(resolutions[resolutionsDropdown.value].width, resolutions[resolutionsDropdown.value].height, fullScreenMode);
+        Screen.SetResolution(resolutions[resolutionsDropdown.value].width, resolutions[resolutionsDropdown.value].height, fullScreenMode);
     }
 
     public void SetResolution(int resolutionIndex)
