@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
 
     public Text ammoCountText;
 
+    public GameObject nextLevelButton;
+
     public GameObject player;
 
     public GameManager gameManager;
@@ -62,5 +64,10 @@ public class UIManager : MonoBehaviour
     public void UpdateAmmoCountText(int currentAmmo)
     {
         ammoCountText.text = "Ammo: " + currentAmmo;
+    }
+
+    public void ToggleNextLevelButton(bool isActive)
+    {
+        nextLevelButton.SetActive(isActive);
     }
 }

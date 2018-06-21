@@ -13,11 +13,22 @@ public class GameManager : MonoBehaviour
     bool gamePaused = false;
     bool levelComplete = false;
 
+    private void Start()
+    {
+        if(uiManager!=null)
+        {
+            if (SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings - 1)
+                uiManager.GetComponent<UIManager>().ToggleNextLevelButton(true);
+            else
+                uiManager.GetComponent<UIManager>().ToggleNextLevelButton(false);
+        }
+    }
+
     private void Update()
     {
-        if(Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel"))
         {
-            if(!gamePaused)
+            if (!gamePaused)
                 PauseGame(true);
             else
                 PauseGame(false);
@@ -27,7 +38,7 @@ public class GameManager : MonoBehaviour
     void PauseGame(bool pauseState)
     {
         gamePaused = pauseState;
-        if(!levelComplete)
+        if (!levelComplete)
         {
             if (gamePaused)
             {
@@ -55,7 +66,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
         Time.timeScale = 1.0f;
     }
-    
+
     public void OpenScene(int sceneNumber)
     {
         SceneManager.LoadScene(sceneNumber);
@@ -71,7 +82,7 @@ public class GameManager : MonoBehaviour
     public void ToggleFailedScreen()
     {
         uiManager.GetComponent<UIManager>().ToggleFailedScreen();
-        
+
         Time.timeScale = 0f;
     }
 
@@ -79,5 +90,14 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void OpenNextScene()
+    {
+        if (SceneManager.GetActiveScene().buildIndex < (SceneManager.sceneCountInBuildSettings - 1))
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

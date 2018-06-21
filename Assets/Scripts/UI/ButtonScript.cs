@@ -14,12 +14,6 @@ public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         audioSource = GetComponent<AudioSource>();
     }
 
-
-    private void OnMouseDown()
-    {
-        Debug.Log("asd");
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         audioSource.PlayOneShot(hoverSound);

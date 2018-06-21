@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialScript : MonoBehaviour
+public class DestroyPairedObjectScript : MonoBehaviour
 {
     public GameObject pairedObject;
     // Use this for initialization
