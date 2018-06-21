@@ -512,7 +512,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   isSeeingPlayer: 0
   enemySpeedWalk: 2
-  enemySpeedRun: 15
+  enemySpeedRun: 12
   attackSound: {fileID: 8300000, guid: 01d3549e150d20848908fa64c6be121e, type: 3}
 --- !u!114 &114623942155454718
 MonoBehaviour:
