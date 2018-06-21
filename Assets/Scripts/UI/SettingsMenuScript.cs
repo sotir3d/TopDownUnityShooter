@@ -12,6 +12,7 @@ public class SettingsMenuScript : MonoBehaviour
     public Dropdown resolutionsDropdown;
     public Dropdown graphicsDropdown;
     public Toggle fullscreenToggle;
+    public Slider volumeSlider;
 
     public GameObject startPanel;
     public GameObject settingsPanel;
@@ -24,6 +25,8 @@ public class SettingsMenuScript : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(Screen.currentResolution);
+
         startPanel.SetActive(true);
         settingsPanel.SetActive(false);
         controlsPanel.SetActive(false);
@@ -31,30 +34,34 @@ public class SettingsMenuScript : MonoBehaviour
 
         resolutions = Screen.resolutions;
         
+        fullscreenToggle.isOn = Screen.fullScreen;
+
+        ToggleFullscreen(Screen.fullScreen);
 
         for (int i = 0; i < resolutions.Length; i++)
         {
             resolutionsDropdown.options.Add(new Dropdown.OptionData(ResToString(resolutions[i])));
 
-            resolutionsDropdown.value = i;
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height && resolutions[i].refreshRate == Screen.currentResolution.refreshRate)
+                resolutionsDropdown.value = i;
 
             resolutionsDropdown.onValueChanged.AddListener(delegate { Screen.SetResolution(resolutions[resolutionsDropdown.value].width, resolutions[resolutionsDropdown.value].height, fullScreenMode); });
-
         }
 
-
+        //when returning to the main menu from another level, set all UI elements to its current values
         graphicsDropdown.value = QualitySettings.GetQualityLevel();
 
-        fullscreenToggle.isOn = Screen.fullScreen;
 
-        ToggleFullscreen(Screen.fullScreen);
+        float audioMixerVolume = 0;
 
+        audioMixer.GetFloat("volume", out audioMixerVolume);
+        volumeSlider.value = audioMixerVolume;
     }
-    
+
 
     string ResToString(Resolution res)
     {
-        return res.width + " x " + res.height;
+        return res.width + " x " + res.height + " @ " + res.refreshRate + " Hz";
     }
 
 

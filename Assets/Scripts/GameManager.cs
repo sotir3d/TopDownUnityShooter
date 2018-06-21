@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,11 +11,15 @@ public class GameManager : MonoBehaviour
 
     public UIManager uiManager;
 
+    public AudioMixerSnapshot paused;
+    public AudioMixerSnapshot unpaused;
+
     bool gamePaused = false;
     bool levelComplete = false;
 
     private void Start()
     {
+        TimeFrozen(false);
         if(uiManager!=null)
         {
             if (SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings - 1)
@@ -42,21 +47,38 @@ public class GameManager : MonoBehaviour
         {
             if (gamePaused)
             {
-                Time.timeScale = 0;
+                TimeFrozen(true);
                 uiManager.GetComponent<UIManager>().SetPauseScreen(true);
             }
             else
             {
-                Time.timeScale = 1;
+                TimeFrozen(false);
                 uiManager.GetComponent<UIManager>().SetPauseScreen(false);
             }
 
         }
     }
 
+    public void TimeFrozen(bool isFrozen)
+    {
+        if (paused == null || unpaused == null)
+            return;
+
+        if(isFrozen)
+        {
+            Time.timeScale = 0;
+            paused.TransitionTo(0.01f);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            unpaused.TransitionTo(0.01f);
+        }
+    }
+
     public void ContinueGame()
     {
-        Time.timeScale = 1;
+        TimeFrozen(false);
         gamePaused = false;
         uiManager.GetComponent<UIManager>().SetPauseScreen(false);
     }
@@ -74,21 +96,20 @@ public class GameManager : MonoBehaviour
 
     public void ToggleVictoryScreen()
     {
+        TimeFrozen(true);
         uiManager.GetComponent<UIManager>().ToggleVictoryScreen();
         levelComplete = true;
-        Time.timeScale = 0f;
     }
 
     public void ToggleFailedScreen()
     {
+        TimeFrozen(true);
         uiManager.GetComponent<UIManager>().ToggleFailedScreen();
-
-        Time.timeScale = 0f;
     }
 
     public void RestartScene()
     {
-        Time.timeScale = 1;
+        TimeFrozen(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -96,7 +117,7 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex < (SceneManager.sceneCountInBuildSettings - 1))
         {
-            Time.timeScale = 1;
+            TimeFrozen(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

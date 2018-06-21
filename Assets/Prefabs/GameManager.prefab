@@ -53,3 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCount: 0
   uiManager: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 5a889722f7ed4a24cbdb406d3173c30f, type: 2}
+  paused: {fileID: 245026015002501024, guid: 5a889722f7ed4a24cbdb406d3173c30f, type: 2}
+  unpaused: {fileID: 24500006, guid: 5a889722f7ed4a24cbdb406d3173c30f, type: 2}
