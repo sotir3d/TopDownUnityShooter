@@ -22,8 +22,8 @@ public class CameraScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        //Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
 
         cameraPosition = transform.position;
         cameraPosition.x = playerTransform.position.x;

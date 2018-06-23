@@ -29,7 +29,8 @@ public class MainMenuScript : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Confined;
+        float audioMixerVolume = 0;
+        
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
 
         startPanel.SetActive(true);
@@ -38,29 +39,30 @@ public class MainMenuScript : MonoBehaviour
         levelsPanel.SetActive(false);
 
         resolutions = Screen.resolutions;
-        
+
+        //when returning to the main menu from another level, set all UI elements to its current values
+        graphicsDropdown.value = QualitySettings.GetQualityLevel();
         fullscreenToggle.isOn = Screen.fullScreen;
 
-        ToggleFullscreen(Screen.fullScreen);
+        audioMixer.GetFloat("volume", out audioMixerVolume);
+        volumeSlider.value = audioMixerVolume;
 
+        fullScreenMode = Screen.fullScreenMode;
+        
+        
         for (int i = 0; i < resolutions.Length; i++)
         {
             resolutionsDropdown.options.Add(new Dropdown.OptionData(ResToString(resolutions[i])));
 
-            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height && resolutions[i].refreshRate == Screen.currentResolution.refreshRate)
+            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height && resolutions[i].refreshRate == Screen.currentResolution.refreshRate)
+            {
                 resolutionsDropdown.value = i;
+            }
 
             resolutionsDropdown.onValueChanged.AddListener(delegate { Screen.SetResolution(resolutions[resolutionsDropdown.value].width, resolutions[resolutionsDropdown.value].height, fullScreenMode); });
         }
-
-        //when returning to the main menu from another level, set all UI elements to its current values
-        graphicsDropdown.value = QualitySettings.GetQualityLevel();
-
-
-        float audioMixerVolume = 0;
-
-        audioMixer.GetFloat("volume", out audioMixerVolume);
-        volumeSlider.value = audioMixerVolume;
+        
+        ToggleFullscreen(Screen.fullScreen);
     }
 
     string ResToString(Resolution res)
@@ -82,9 +84,15 @@ public class MainMenuScript : MonoBehaviour
     public void ToggleFullscreen(bool isFullscreen)
     {
         if (isFullscreen)
+        {
             fullScreenMode = FullScreenMode.FullScreenWindow;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
         else
+        {
             fullScreenMode = FullScreenMode.Windowed;
+            Cursor.lockState = CursorLockMode.None;
+        }
 
         Screen.SetResolution(resolutions[resolutionsDropdown.value].width, resolutions[resolutionsDropdown.value].height, fullScreenMode);
     }
