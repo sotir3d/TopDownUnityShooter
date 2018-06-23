@@ -16,7 +16,7 @@ public class EnemyPatrolling : MonoBehaviour
     public float enemySpeedWalk = 2;
     public float enemySpeedRun = 5;
 
-    public AudioClip attackSound;
+    public AudioClip[] attackSound;
     Animator anim;
 
     AudioSource zombieAudioSource;
@@ -159,7 +159,7 @@ public class EnemyPatrolling : MonoBehaviour
 
         if(!isScreaming)
         {
-            zombieAudioSource.PlayOneShot(attackSound);
+            zombieAudioSource.PlayOneShot(attackSound[Random.Range(0,attackSound.Length)]);
             isScreaming = true;
         }
     }
