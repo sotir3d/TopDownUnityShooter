@@ -36,20 +36,22 @@ public class PlayerHandler : MonoBehaviour
     {
         if (gameManager.GetComponent<GameManager>().enemyCount == 0)
         {
-            Invoke("ToggleVictoryScreen", 0.5f);   
+            Invoke("ToggleVictoryScreen", 0.5f);
         }
     }
 
     void ToggleVictoryScreen()
     {
-        //uiManager.GetComponent<UIManager>().ToggleVictoryScreen();
-        gameManager.GetComponent<GameManager>().ToggleVictoryScreen();
+        if (!deathTriggered)
+            gameManager.GetComponent<GameManager>().ToggleVictoryScreen();
     }
 
     public void Death()
     {
         if (!deathTriggered)
         {
+            deathTriggered = true;
+
             Instantiate(bloodSpatter, transform.position, transform.rotation);
             Instantiate(bloodDecal, transform.position, transform.rotation);
 
@@ -74,7 +76,7 @@ public class PlayerHandler : MonoBehaviour
         anim.SetInteger("WeaponSwap", (int)newWeapon);
         animFeet.SetInteger("WeaponSwap", (int)newWeapon);
 
-        
+
         if (newWeapon == WeaponType.Knife)
         {
             GetComponent<PlayerWeapon>().fireRate = GlobalValues.fireRateMelee;

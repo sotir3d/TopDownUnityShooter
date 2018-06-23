@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 using System.Linq;
 
-public class SettingsMenuScript : MonoBehaviour
+public class MainMenuScript : MonoBehaviour
 {
     public AudioMixer audioMixer;
 
@@ -25,8 +25,6 @@ public class SettingsMenuScript : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(Screen.currentResolution);
-
         startPanel.SetActive(true);
         settingsPanel.SetActive(false);
         controlsPanel.SetActive(false);
@@ -57,7 +55,6 @@ public class SettingsMenuScript : MonoBehaviour
         audioMixer.GetFloat("volume", out audioMixerVolume);
         volumeSlider.value = audioMixerVolume;
     }
-
 
     string ResToString(Resolution res)
     {

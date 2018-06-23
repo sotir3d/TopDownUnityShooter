@@ -7,7 +7,7 @@ public class PickupScript : MonoBehaviour
 
     public GameObject player;
 
-    public GameObject light;
+    new Light light;
 
     public WeaponType weaponType;
     public AudioClip throwSound;
@@ -30,6 +30,7 @@ public class PickupScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        light = GetComponentInChildren<Light>();
         pickupAudioSource = GetComponent<AudioSource>();
         pickupSpawnedTime = Time.time;
     }
