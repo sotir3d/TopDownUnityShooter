@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxCameraOffset: 7
-  lookAroundOffset: 20
+  lookAroundOffset: 17
   cameraMoveSpeed: 8
   playerTransform: {fileID: 0}
   cursorTexture: {fileID: 2800000, guid: 16882d67e2e5b6f4c95b915946bd5222, type: 3}

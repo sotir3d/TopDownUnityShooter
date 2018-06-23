@@ -400,7 +400,7 @@ Transform:
   m_LocalScale: {x: 0.9999939, y: 0.9999939, z: 0.9999935}
   m_Children: []
   m_Father: {fileID: 1594726889}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &115599907 stripped
 Transform:
@@ -435,7 +435,7 @@ Transform:
   m_LocalScale: {x: 0.9999939, y: 0.9999939, z: 0.9999935}
   m_Children: []
   m_Father: {fileID: 1594726889}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &151871894
 Prefab:
@@ -21417,7 +21417,7 @@ Transform:
   m_LocalScale: {x: 0.9999939, y: 0.9999939, z: 0.9999935}
   m_Children: []
   m_Father: {fileID: 1594726889}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &920121295
 GameObject:
@@ -23070,7 +23070,7 @@ SpriteRenderer:
   m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2557f058d1e9dc64693d1d182358c85d, type: 3}
-  m_Color: {r: 0.6886792, g: 0.5165094, b: 0.5165094, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -23120,7 +23120,7 @@ Transform:
   m_LocalScale: {x: 0.9999939, y: 0.9999939, z: 0.9999935}
   m_Children: []
   m_Father: {fileID: 1594726889}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2002804953
 Prefab:

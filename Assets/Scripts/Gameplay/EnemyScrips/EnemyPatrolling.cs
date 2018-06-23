@@ -157,8 +157,10 @@ public class EnemyPatrolling : MonoBehaviour
         lastTimeSeenPlayer = Time.time;
         isSeeingPlayer = true;
 
+        //avoid multiple screams when charging
         if(!isScreaming)
         {
+            zombieAudioSource.pitch = Random.Range(0.8f, 1.2f);
             zombieAudioSource.PlayOneShot(attackSound[Random.Range(0,attackSound.Length)]);
             isScreaming = true;
         }

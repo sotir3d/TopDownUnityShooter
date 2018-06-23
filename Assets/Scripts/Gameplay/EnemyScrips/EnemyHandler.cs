@@ -10,6 +10,7 @@ public class EnemyHandler : MonoBehaviour
     public GameObject bloodDecal;
 
     public AudioClip[] bloodSpatterSound;
+    public AudioClip[] deathSound;
 
     AudioSource enemyAudioSource;
 
@@ -33,7 +34,9 @@ public class EnemyHandler : MonoBehaviour
 
             gameManager.GetComponent<GameManager>().enemyCount--;
             Destroy(enemyCharacter);
-            
+
+            enemyAudioSource.pitch = Random.Range(0.8f, 1.2f);
+            enemyAudioSource.PlayOneShot(deathSound[Random.Range(0,deathSound.Length)]);
             enemyAudioSource.PlayOneShot(bloodSpatterSound[Random.Range(0,bloodSpatterSound.Length)]);
             Invoke("DestroyObject", 0.5f);
         }
