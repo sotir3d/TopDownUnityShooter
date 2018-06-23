@@ -5245,7 +5245,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Pickup Weapon
+  m_Text: Pick Up Weapon
 --- !u!222 &1241188051
 CanvasRenderer:
   m_ObjectHideFlags: 0

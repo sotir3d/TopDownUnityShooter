@@ -144,7 +144,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626169632442670}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -7.1245294, y: -4.543482, z: 0}
+  m_LocalPosition: {x: -2.6180954, y: -14.787165, z: 0}
   m_LocalScale: {x: 0.5775737, y: 0.5775737, z: 0.5775737}
   m_Children:
   - {fileID: 4369131189382076}
@@ -516,7 +516,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   isSeeingPlayer: 0
   enemySpeedWalk: 2
-  enemySpeedRun: 15
+  enemySpeedRun: 12
   attackSound:
   - {fileID: 8300000, guid: 4d1f56f86d295cf4a91b23f58ec6e377, type: 3}
   - {fileID: 8300000, guid: f5f82f5abe24f6644a34695015208c17, type: 3}

@@ -134,7 +134,7 @@ public class EnemyPatrolling : MonoBehaviour
     {
         int layerMask;
 
-        // set up the layer mask, so that it ignores layers 9 and 10
+        // set up the layer mask, so that it ignores layers 9, 10 and 11
         layerMask = 1 << 9;
         layerMask += 1 << 10;
         layerMask += 1 << 11;
