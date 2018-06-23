@@ -7,8 +7,6 @@ public class PickupScript : MonoBehaviour
 
     public GameObject player;
 
-    new Light light;
-
     public WeaponType weaponType;
     public AudioClip throwSound;
     public AudioClip pickupSound;
@@ -17,6 +15,7 @@ public class PickupScript : MonoBehaviour
     public int ammo;
 
     float rotationSpeed = 30;
+    Light pointLight;
 
     AudioSource pickupAudioSource;
 
@@ -30,7 +29,7 @@ public class PickupScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        light = GetComponentInChildren<Light>();
+        pointLight = GetComponentInChildren<Light>();
         pickupAudioSource = GetComponent<AudioSource>();
         pickupSpawnedTime = Time.time;
     }
@@ -57,7 +56,7 @@ public class PickupScript : MonoBehaviour
 
             Destroy(GetComponent<SpriteRenderer>());
             Destroy(GetComponent<BoxCollider2D>());
-            Destroy(light);
+            Destroy(pointLight);
             Invoke("DestroyPickup", 1);
         }
     }

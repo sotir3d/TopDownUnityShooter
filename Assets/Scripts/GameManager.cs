@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     void PauseGame(bool pauseState)
     {
         gamePaused = pauseState;
-        if (!levelComplete)
+        if (!levelComplete && uiManager != null)
         {
             if (gamePaused)
             {
