@@ -19,12 +19,19 @@ public class MainMenuScript : MonoBehaviour
     public GameObject controlsPanel;
     public GameObject levelsPanel;
 
+    public Texture2D cursorTexture;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
+
     Resolution[] resolutions;
 
     FullScreenMode fullScreenMode;
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+
         startPanel.SetActive(true);
         settingsPanel.SetActive(false);
         controlsPanel.SetActive(false);
