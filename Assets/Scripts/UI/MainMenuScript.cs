@@ -44,6 +44,9 @@ public class MainMenuScript : MonoBehaviour
         graphicsDropdown.value = QualitySettings.GetQualityLevel();
         fullscreenToggle.isOn = Screen.fullScreen;
 
+        if (PlayerPrefs.HasKey("volume"))
+            audioMixer.SetFloat("volume", PlayerPrefs.GetFloat("volume"));
+
         audioMixer.GetFloat("volume", out audioMixerVolume);
         volumeSlider.value = audioMixerVolume;
 
@@ -74,6 +77,7 @@ public class MainMenuScript : MonoBehaviour
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
+        PlayerPrefs.SetFloat("volume", volume);
     }
 
     public void SetQuality(int quality)

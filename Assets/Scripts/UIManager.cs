@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,12 +13,18 @@ public class UIManager : MonoBehaviour
     public Canvas failedCanvas;
 
     public Text ammoCountText;
+    public Text timerText;
+
+    public Text highScore;
+    public Text currentScore;
 
     public GameObject nextLevelButton;
 
     public GameObject player;
 
     public GameManager gameManager;
+
+    TimeSpan currentTimeSpan;
 
     void Start()
     {
@@ -32,13 +40,26 @@ public class UIManager : MonoBehaviour
         if (player != null)
         {
             ammoCountText.text = "Ammo: " + player.GetComponent<PlayerWeapon>().ammoCount;
+
+            timerText.text = ConvertFloatTimeToStringTime(Time.timeSinceLevelLoad);
         }
     }
 
     public void ToggleVictoryScreen()
     {
+        currentScore.text = ConvertFloatTimeToStringTime(Time.timeSinceLevelLoad);
+        highScore.text = ConvertFloatTimeToStringTime(PlayerPrefs.GetFloat("Level" + SceneManager.GetActiveScene().buildIndex));
         victoryCanvas.enabled = true;
         uiCanvas.enabled = false;
+    }
+
+    string ConvertFloatTimeToStringTime(float time)
+    {
+        TimeSpan convertTimeSpan;
+
+        convertTimeSpan = TimeSpan.FromSeconds(time);
+
+        return convertTimeSpan.Minutes.ToString("00") + ":" + convertTimeSpan.Seconds.ToString("00") + "." + convertTimeSpan.Milliseconds / 100;
     }
 
     public void ToggleFailedScreen()

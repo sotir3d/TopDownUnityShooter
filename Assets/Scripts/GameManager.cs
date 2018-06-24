@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public AudioMixerSnapshot unpaused;
 
     bool gamePaused = false;
-    bool levelComplete = false;
+    bool levelDone = false;
 
     private void Start()
     {
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     void PauseGame(bool pauseState)
     {
         gamePaused = pauseState;
-        if (!levelComplete && uiManager != null)
+        if (!levelDone && uiManager != null)
         {
             if (gamePaused)
             {
@@ -94,17 +94,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneNumber);
     }
 
-    public void ToggleVictoryScreen()
+    public void Victory()
     {
+        if(PlayerPrefs.GetFloat("Level" + SceneManager.GetActiveScene().buildIndex) > Time.timeSinceLevelLoad || !PlayerPrefs.HasKey("Level" + SceneManager.GetActiveScene().buildIndex))
+            PlayerPrefs.SetFloat("Level" + SceneManager.GetActiveScene().buildIndex, Time.timeSinceLevelLoad);
+        
         TimeFrozen(true);
         uiManager.GetComponent<UIManager>().ToggleVictoryScreen();
-        levelComplete = true;
+        levelDone = true;
     }
 
     public void ToggleFailedScreen()
     {
         TimeFrozen(true);
         uiManager.GetComponent<UIManager>().ToggleFailedScreen();
+        levelDone = true;
     }
 
     public void RestartScene()

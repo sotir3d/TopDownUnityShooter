@@ -43,7 +43,7 @@ public class PlayerHandler : MonoBehaviour
     void ToggleVictoryScreen()
     {
         if (!deathTriggered)
-            gameManager.GetComponent<GameManager>().ToggleVictoryScreen();
+            gameManager.GetComponent<GameManager>().Victory();
     }
 
     public void Death()

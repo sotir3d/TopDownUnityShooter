@@ -252,7 +252,32 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114028491704497092, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 196602611}
     - target: {fileID: 114337379438916864, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 196602611}
+    - target: {fileID: 114163388332442584, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1016681651}
+    - target: {fileID: 114163388332442584, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
+        type: 2}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 196602611}
+    - target: {fileID: 114847938831182390, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 196602611}
+    - target: {fileID: 114210538581607316, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -262,17 +287,7 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 196602611}
-    - target: {fileID: 114028491704497092, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 196602611}
     - target: {fileID: 114144266781635384, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 196602611}
-    - target: {fileID: 114847938831182390, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -287,21 +302,6 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 196602611}
-    - target: {fileID: 114210538581607316, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 196602611}
-    - target: {fileID: 114163388332442584, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
-        type: 2}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 196602611}
-    - target: {fileID: 114163388332442584, guid: 4ae1acddfb32a7e4d84538f0d96f5a49,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1016681651}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ae1acddfb32a7e4d84538f0d96f5a49, type: 2}
   m_IsPrefabParent: 0
